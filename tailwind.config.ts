@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      screen: {
+        'xs': '512px'
+      },
       colors: {
         primary: "#382a33",
         secondary: "#ee791d",
@@ -15,6 +18,10 @@ export default {
         background: "#fcf9f6",
         text: "#b8a8a8",
       },
+      fontFamily: {
+        eugusto: "var(--eugusto)",
+        urbanist: "var(--urbanist)",
+      }
     },
   },
   plugins: [],

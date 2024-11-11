@@ -1,16 +1,19 @@
 import type { Metadata } from "next";
+import { Urbanist } from "next/font/google"
 import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
+const eugusto = localFont({
+  src: "./fonts/Eugusto.otf",
+  variable: "--eugusto",
   weight: "100 900",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  variable: "--urbanist",
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  fallback: ["Helvetica", "Arial", "sans-serif"]
 });
 
 export const metadata: Metadata = {
@@ -26,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${eugusto.variable} ${urbanist.variable} antialiased font-urbanist`}
       >
         {children}
       </body>
