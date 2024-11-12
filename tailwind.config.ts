@@ -16,11 +16,13 @@ export default {
         secondary: "#ee791d",
         "light-secondary": "#ffe8ca",
         background: "#fcf9f6",
-        text: "#b8a8a8",
+        // text: "#b8a8a8",
+        text: "#584455",
       },
       fontFamily: {
         eugusto: "var(--eugusto)",
         urbanist: "var(--urbanist)",
+        inspiration: "var(--inspiration)",
       }
     },
   },
