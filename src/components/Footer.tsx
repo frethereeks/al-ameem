@@ -31,7 +31,7 @@ export default function Footer() {
             <div className="flex flex-col text-base md:text-base opacity-90">
               <p className="leading-loose">Monday - Friday</p>
               <p className="leading-loose">08:30 AM - 05:00 PM</p>
-              <Link href={"tel: +2349088888733"} className="leading-loose">Tel: +2348038976335</Link>
+              <Link href={"tel: +2348038976335"} className="leading-loose">Tel: +2348038976335</Link>
             </div>
           </div>
           <Header4 className='text-text'>Socials</Header4>

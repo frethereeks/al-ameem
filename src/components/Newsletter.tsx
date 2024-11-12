@@ -10,7 +10,7 @@ export default function Newsletter() {
                     <Header3 className='text-secondary font-inspiration'>Newsletter</Header3>
                     <Header1 className='text-white font-medium font-eugusto max-w-sm'>Subscribe for Offer Updates</Header1>
                     <form action="" className="p-1.5 my-2 bg-white rounded-[2rem] flex gap-2 max-w-md">
-                        <input type="email" name="newsletter" id="newsletter" placeholder='Enter Email Address' className="flex-1 p-4 text-text text-sm lg:text-base rounded-[3rem]" />
+                        <input type="email" name="newsletter" id="newsletter" required placeholder='Enter Email Address' className="flex-1 p-4 text-text text-sm lg:text-base rounded-[3rem]" />
                         <button type="submit" className="flex-shrink-0 px-8 rounded-[2rem] bg-secondary text-white text-sm md:text-base cursor-pointer font-urbanist flex items-center">Subscribe</button>
                     </form>
                 </aside>

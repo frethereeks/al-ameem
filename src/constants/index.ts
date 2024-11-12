@@ -1,4 +1,4 @@
-import { IMAGE_URL } from "@/assets/images"
+// import { IMAGE_URL } from "@/assets/images"
 
 /**
  * ASSETS URL
@@ -6,7 +6,7 @@ import { IMAGE_URL } from "@/assets/images"
  */
 export const ASSETS_URL = {
     "oakyard_properties_prototype_video": "/videos/oakyard_properties_prototype_video.mp4",
-    ...IMAGE_URL
+    // ...IMAGE_URL
 }
 
 export const SOCIALLINKS = {

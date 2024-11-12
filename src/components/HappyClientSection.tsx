@@ -1,5 +1,5 @@
 import React from 'react'
-import { Para3, Para1, ParaSmall, Header2, } from '@/components/ui/Typography'
+import { Para3, Para1, Header2, } from '@/components/ui/Typography'
 // import { ASSETS_URL } from '@/constants'
 // import Image from 'next/image'
 
