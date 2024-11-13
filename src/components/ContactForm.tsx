@@ -10,14 +10,14 @@ export default function ContactForm() {
                   <Header3 className='text-secondary font-inspiration'>Place an Order or</Header3>
                   <Header1 className='text-white font-medium font-eugusto max-w-sm'>Reach out in minutes</Header1>
                   <form action="" className="flex flex-col gap-2 max-w-md mt-4">
-                      <input type="fullname" name="fullname" id="fullname" required placeholder='Enter Full Name e.g. Musa Saliu' className="flex-1 flex px-4 py-2 text-text text-sm lg:text-base rounded-[3rem]" />
-                      <input type="email" name="newsletter" id="newsletter" required placeholder='Enter Email Address e.g. saliumusa@gmail.com' className="flex-1 flex px-4 py-2 text-text text-sm lg:text-base rounded-[3rem]" />
-                      <div className="flex gap-1 p-4 text-text text-sm lg:text-base rounded-[3rem] bg-white">
-                          <div className="flex-shrink-0">+234</div>
-                          <input type="phone" name="phone" id="phone" maxLength={10} required placeholder='Enter Phone Number' className="flex-1" />
+                      <input type="fullname" name="fullname" id="fullname" required placeholder='Enter Full Name e.g. Musa Saliu' className="flex-1 flex px-4 py-3 text-text text-sm lg:text-base rounded-[3rem]" />
+                      <input type="email" name="newsletter" id="newsletter" required placeholder='Enter Email Address e.g. saliumusa@gmail.com' className="flex-1 flex px-4 py-3 text-text text-sm lg:text-base rounded-[3rem]" />
+                      <div className="flex gap-1 px-4 text-text text-sm lg:text-base rounded-[3rem] bg-white">
+                          <div className="flex-shrink-0 grid place-items-center">+234</div>
+                          <input type="phone" name="phone" id="phone" maxLength={10} required placeholder='Enter Phone Number' className="flex-1 py-3" />
                       </div>
-                      <textarea name="message" id="message" cols={30} rows={5} placeholder='Enter Email Address e.g. saliumusa@gmail.com' className="flex-1 flex p-4 text-text text-sm lg:text-base min-h-34 rounded-[1rem]"></textarea>
-                      <button className="group flex-shrink-0 flex flex-row-reverse items-center gap-2 w-max px-6 lg:px-8 py-2 lg:py-3 rounded-[2rem] bg-secondary text-white text-lg md:text-xl cursor-pointer font-urbanist">Send <GrSend className="text-lg md:text-xl" /></button>
+                      <textarea name="message" id="message" cols={30} rows={5} placeholder='Enter Email Address e.g. saliumusa@gmail.com' className="flex-1 flex p-4 text-text text-sm lg:text-base min-h-44 rounded-[1rem]"></textarea>
+                      <button className="group flex-shrink-0 flex items-center gap-2 w-max px-10 lg:px-8 py-2 lg:py-3 rounded-[2rem] bg-secondary text-white text-lg md:text-xl cursor-pointer font-bold font-urbanist"> <GrSend className="text-lg md:text-xl" /> Send</button>
                   </form>
               </aside>
           </div>

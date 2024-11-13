@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Urbanist, Inspiration } from "next/font/google"
 import localFont from "next/font/local";
 import "./globals.css";
+import {Toaster} from "react-hot-toast"
 import { Header, Footer } from "@/components";
 
 const eugusto = localFont({ src: "../fonts/Eugusto.otf", variable: "--eugusto", weight: "100 900", });
@@ -24,6 +25,7 @@ export default function RootLayout({
         className={`${eugusto.variable} ${inspiration.variable} ${urbanist.variable} antialiased font-urbanist`}
       >
         <Header />
+        <Toaster />
         <div className="font-urbanist min-h-[80vh]">
           {children}
         </div>
