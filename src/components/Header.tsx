@@ -29,11 +29,11 @@ export default function Header() {
     }, [location])
 
     return (
-        <header className={`${fixed ? 'fixed shadow-md shadow-black/20' : 'relative shadow-none'} z-40 w-full px-4 py-4 md:py-6 bg-white`}>
+        <header className={`${fixed ? 'fixed shadow-md shadow-black/20' : 'relative shadow-none'} z-40 w-full px-4 py-2 md:py-4 lg:py-5 bg-white`}>
             <div className="container mx-auto flex justify-between gap-4">
                 <nav className={`flex-1 flex flex-col lg:flex-row lg:items-center gap-2 z-50 absolute lg:static top-0 w-full min-h-screen lg:min-h-max ${navshow ? 'right-0' : 'right-full'}`}>
                     <div onClick={() => setNavshow(!navshow)} className={`${navshow ? 'flex lg:hidden' : 'hidden'} transition-none duration-0 fixed top-0 left-0 w-screen h-screen bg-text/50`}></div>
-                    <div className="relative flex flex-col lg:flex-row justify-center lg:justify-start h-screen lg:h-max lg:items-center gap-2 max-w-[20rem] lg:max-w-max bg-white">
+                    <div className="relative flex flex-col lg:flex-row justify-center lg:justify-start h-screen lg:h-max lg:items-center gap-2 lg:gap-1 xl:gap-2 max-w-[20rem] lg:max-w-max bg-white">
                         <div onClick={() => setNavshow(!navshow)} className="absolute top-2 right-3 lg:hidden bg-text/30 text-primary text-3xl cursor-pointer p-1 grid place-items-center font-extrabold rounded-xl">
                             <IoCloseOutline />
                         </div>
@@ -43,13 +43,13 @@ export default function Header() {
                         </form>
                         {
                             headerLinks.map(link => (
-                                <Link key={link.id} href={link.url} className="lg:flex-1 p-2 font-semibold lg:text-center text-primary hover:text-white bg-white hover:bg-primary lg:rounded-lg capitalize">{link.title}</Link>
+                                <Link key={link.id} href={link.url} className="lg:flex-1 p-2 lg:px-4 font-semibold lg:text-center text-primary hover:text-white bg-white hover:bg-primary lg:rounded-lg capitalize">{link.title}</Link>
                             ))
                         }
                     </div>
                 </nav>
                 <div className="flex-1 flex lg:justify-center items-center flex-shrink-0">
-                    <Link href={appRoutePaths.home} className='text-primary text-xl md:text-3xl lg:text-5xl font-medium font-eugusto'>Al-Ameen</Link>
+                    <Link href={appRoutePaths.home} className='text-primary text-2xl md:text-3xl lg:text-5xl font-medium font-eugusto leading-none'>Al-Ameen <span className='text-secondary flex text-sm lg:text-2xl text-center md:tracking-widest uppercase -my-1 lg:-my-2'>Confectionary</span></Link>
                 </div>
                 <div className='flex-1 flex-shrink-0 flex justify-end items-center gap-4'>
                     <form action="" className={`hidden lg:flex gap-2 border-b-2 border-primary max-w-lg`}>

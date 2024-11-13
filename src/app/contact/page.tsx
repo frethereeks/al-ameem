@@ -12,7 +12,7 @@ export default function ContactPage() {
             <Header3 className='text-secondary font-inspiration'>Contact us</Header3>
             <div className="flex flex-col gap-1">
               <Header3 className='text-primary font-medium font-eugusto max-w-sm'>Phone Number</Header3>
-              <Link href={"tel: +2348038976335"} className="font-urbanist text-text text-lg lg:text-xl max-w-md">+2348038976335</Link>
+              <Link href={"tel: +2349069071120"} className="font-urbanist text-text text-lg lg:text-xl max-w-md">+2349069071120</Link>
             </div>
             <div className="flex flex-col gap-1 mt-5">
               <Header3 className='text-primary font-medium font-eugusto max-w-sm'>Email Address</Header3>

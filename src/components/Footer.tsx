@@ -9,14 +9,14 @@ import { Header3, Header4, Para2 } from './ui/Typography'
 export default function Footer() {
   return (
     <footer className='bg-background py-10 px-4'>
-      <div className="container mx-auto relative grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 text-text">
-        <aside className="flex flex-col gap-3 md:gap-6">
-          <Header3 className='text-text'>Al-Ameen<span className='text-secondary'>.</span></Header3>
-          <Header4 className='text-text'>Location</Header4>
-          <Para2 className="opacity-90 leading-loose">110, along NYSC road, adjacent Gidan-Megishiri, Birnin-Kebbi, Kebbi, Nigeria</Para2>
+      <div className="container mx-auto relative grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-10 text-text">
+        <aside className="flex flex-col gap-3">
+          <Header3 className='text-text leading-none'>Al-Ameen<span className='text-secondary flex text-xl md:text-2xl leading-none'>Confectionary.</span></Header3>
+          <Header4 className='text-text md:pt-6'>Location</Header4>
+          <Para2 className="opacity-90 leading-loose lg:max-w-xs md:pr-4">Wara, Ngaski Local Government Area, Kebbi, Nigeria</Para2>
           {/* <Link href={appRoutePaths.googleMap} target='_blank' referrerPolicy='no-referrer' className='bg-secondary hover:bg-white hover:text-secondary py-2 px-6 text-text rounded-sm w-max'>Directions</Link> */}
         </aside>
-        <aside className="flex flex-col sm:justify-end gap-6">
+        <aside className="flex flex-col sm:justify-center gap-4">
           <Header4 className='text-text'>Quick Links</Header4>
           <div className="flex flex-col text-base md:text-base opacity-90">
             <Link href={appRoutePaths.home} className="leading-loose">Home</Link>
@@ -25,13 +25,13 @@ export default function Footer() {
             <Link href={appRoutePaths.contact} className="leading-loose">Contact</Link>
           </div>
         </aside>
-        <aside className="flex flex-col sm:justify-end gap-3 md:gap-6">
-          <div className="flex flex-col gap-3 md:gap-6">
+        <aside className="flex flex-col sm:justify-end gap-3 md:gap-4">
+          <div className="flex flex-col gap-3 md:gap-4">
             <Header4 className='text-text'>Opening Hours</Header4>
             <div className="flex flex-col text-base md:text-base opacity-90">
               <p className="leading-loose">Monday - Friday</p>
               <p className="leading-loose">08:30 AM - 05:00 PM</p>
-              <Link href={"tel: +2348038976335"} className="leading-loose">Tel: +2348038976335</Link>
+              <Link href={"tel: +2349069071120"} className="leading-loose">Tel: +2349069071120</Link>
             </div>
           </div>
           <Header4 className='text-text'>Socials</Header4>
