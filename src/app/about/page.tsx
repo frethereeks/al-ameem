@@ -3,10 +3,12 @@ import React from 'react'
 
 export default function AboutPage() {
   return (
-      <main className='relative flex flex-col'>
-          <AboutSection />
-          <HappyClientSection />
-          <Newsletter />
+    <main className='relative flex flex-col'>
+      <div className="bg-primary">
+        <AboutSection />
+      </div>
+      <HappyClientSection />
+      <Newsletter />
     </main>
   )
 }

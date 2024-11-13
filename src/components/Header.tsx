@@ -56,7 +56,7 @@ export default function Header() {
                         <input type="search" name="search" id="search" placeholder='Search...' required className="flex-1 p-2 text-sm lg:text-base text-text" />
                         <button className="bg-transparent grid place-items-center text-primary text-lg md:text-xl cursor-pointer"><IoSearchOutline /></button>
                     </form>
-                    <div className="relative text-primary text-2xl lg:text-3xl cursor-pointer p-2">
+                    <div className="relative text-primary text-2xl lg:text-2xl cursor-pointer p-2">
                         <HiOutlineShoppingCart />
                         <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-secondary text-white text-xs grid place-items-center">5</div>
                     </div>

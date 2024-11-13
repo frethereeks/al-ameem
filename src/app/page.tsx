@@ -14,7 +14,7 @@ export default function Home() {
             <Header3 className='text-secondary font-inspiration'>Time to</Header3>
             <Header1 className='text-primary font-medium font-eugusto max-w-sm'>Enjoy Delicious <span className="flex items-center gap-4 lg:gap-6">Sushi Food</span></Header1>
             <Para1 className="font-urbanist text-text text-lg lg:text-xl max-w-md">After a good dinner, one can forgive anybody, even one&apos;s own relations</Para1>
-            <Link href={appRoutePaths.menu} className="group flex-shrink-0 flex items-center gap-1.5 lg:gap-3 w-max px-6 lg:px-8 py-2 lg:py-3 rounded-[2rem] bg-secondary text-white text-lg md:text-xl cursor-pointer font-urbanist">Order Now <IoIosArrowRoundForward className="text-xl md:text-3xl group-hover:translate-x-2" /></Link>
+            <Link href={appRoutePaths.menu} className="group flex-shrink-0 flex items-center gap-1.5 lg:gap-3 w-max px-6 lg:px-8 py-2 lg:py-3 mt-2 rounded-[2rem] bg-secondary text-white text-lg md:text-xl cursor-pointer font-urbanist">Order Now <IoIosArrowRoundForward className="text-xl md:text-3xl group-hover:translate-x-2" /></Link>
           </aside>
           <aside className="relative bg-primary rounded-xl min-h-60 row-start-1 md:row-span-2"></aside>
         </div>

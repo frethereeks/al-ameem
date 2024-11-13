@@ -20,9 +20,9 @@ export default function AboutSection() {
                         <Para1 className={`font-urbanist ${pathname === appRoutePaths.about ? "text-white opacity-60" : "text-text"} text-lg lg:text-xl max-w-md`}>Foor for us comes from our relatives, whether they have wings or fins or roots. That is how we consider food. Food has a culture, it has a history, it has a story and a relationship.</Para1>
                         {
                             pathname === appRoutePaths.about ?
-                            <Link href={appRoutePaths.menu} className="group flex-shrink-0 flex items-center gap-3 w-max px-6 lg:px-8 py-2 lg:py-3 rounded-[2rem] bg-white text-primary text-lg md:text-xl cursor-pointer font-urbanist">Order Food <IoIosArrowRoundForward className="text-xl md:text-3xl group-hover:translate-x-2" /></Link>
+                            <Link href={appRoutePaths.menu} className="group flex-shrink-0 flex items-center gap-3 w-max px-6 lg:px-8 py-2 lg:py-3 mt-2 rounded-[2rem] bg-white text-primary text-lg md:text-xl cursor-pointer font-urbanist">Order Food <IoIosArrowRoundForward className="text-xl md:text-3xl group-hover:translate-x-2" /></Link>
                                 :
-                            <Link href={appRoutePaths.about} className="group flex-shrink-0 flex items-center gap-3 w-max px-6 lg:px-8 py-2 lg:py-3 rounded-[2rem] bg-secondary text-white text-lg md:text-xl cursor-pointer font-urbanist">Learn More <IoIosArrowRoundForward className="text-xl md:text-3xl group-hover:translate-x-2" /></Link>
+                            <Link href={appRoutePaths.about} className="group flex-shrink-0 flex items-center gap-3 w-max px-6 lg:px-8 py-2 lg:py-3 mt-2 rounded-[2rem] bg-secondary text-white text-lg md:text-xl cursor-pointer font-urbanist">Learn More <IoIosArrowRoundForward className="text-xl md:text-3xl group-hover:translate-x-2" /></Link>
                         }
                     </aside>
                 </div>
