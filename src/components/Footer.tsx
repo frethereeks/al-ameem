@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer className='bg-background py-10 px-4'>
       <div className="container mx-auto relative grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10 text-text">
-        <aside className="flex flex-col gap-6">
+        <aside className="flex flex-col gap-3 md:gap-6">
           <Header3 className='text-text'>Al-Ameen<span className='text-secondary'>.</span></Header3>
           <Header4 className='text-text'>Location</Header4>
           <Para2 className="opacity-90 leading-loose">110, along NYSC road, adjacent Gidan-Megishiri, Birnin-Kebbi, Kebbi, Nigeria</Para2>
@@ -25,8 +25,8 @@ export default function Footer() {
             <Link href={appRoutePaths.contact} className="leading-loose">Contact</Link>
           </div>
         </aside>
-        <aside className="flex flex-col sm:justify-end gap-6">
-          <div className="flex flex-col gap-6">
+        <aside className="flex flex-col sm:justify-end gap-3 md:gap-6">
+          <div className="flex flex-col gap-3 md:gap-6">
             <Header4 className='text-text'>Opening Hours</Header4>
             <div className="flex flex-col text-base md:text-base opacity-90">
               <p className="leading-loose">Monday - Friday</p>

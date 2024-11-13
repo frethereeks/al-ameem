@@ -16,7 +16,7 @@
 
 *, *::before, *::after {
   outline: 0 !important;
-  transition: all .35s ease-in-out !important;
+  transition: all .35s ease-in-out;
 }
 
 body {

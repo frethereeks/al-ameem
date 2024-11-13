@@ -32,7 +32,7 @@ export default function HappyClientSection() {
                             <Para3 variant='secondary' className='opacity-70'>June, {new Date().getFullYear()}</Para3>
                         </div>
                     </div>
-                    <Para3 className='text-text text-justify'>Being naturally paranoid and money-conscious, I started out doing little business with oakyardproperties, but from the first time, they struck me as a group that is well worth my trust. I have not regretted giving it to them.</Para3>
+                    <Para3 className='text-text text-justify'>Being naturally paranoid and money-conscious, I started out doing little business with Al-Ameen, but from the first time, they struck me as a group that is well worth my trust. I have not regretted giving it to them.</Para3>
                 </aside>
                 <aside data-aos-duration="1000" data-aos="fade-up-right" className="flex flex-col gap-4 relative">
                     <div className="flex items-center gap-2">
@@ -44,7 +44,7 @@ export default function HappyClientSection() {
                             <Para3 variant='secondary' className='opacity-70'>April, {new Date().getFullYear()}</Para3>
                         </div>
                     </div>
-                    <Para3 className='text-text text-justify'>I have been dealing with oakyardproperties for a while now, in all these time, they have always delivered exceedingly and exactly what they promise (sometimes more). I would highly recommend them to anyone.</Para3>
+                    <Para3 className='text-text text-justify'>I have been dealing with Al-Ameen for a while now, in all these time, they have always delivered exceedingly and exactly what they promise (sometimes more). I would highly recommend them to anyone.</Para3>
                 </aside>
             </div>
         </section>

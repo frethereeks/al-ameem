@@ -7,9 +7,9 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 export default function PopularSection() {
     return (
         <>
-            <section className="py-5 md:py-10 lg:py-20 px-4">
-                <div className="container mx-auto flex flex-col gap-8">
-                    <Header1 className="text-primary text-center pb-4 font-medium">Popular Dishes</Header1>
+            <section className="py-10 md:py-10 lg:py-20 px-4">
+                <div className="container mx-auto flex flex-col gap-6 md:gap-8">
+                    <Header1 className="text-primary text-center py-4 font-medium">Popular Dishes</Header1>
                     <div className="px-4 md:px-8 lg:px-10 grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
                         <aside className="relative flex flex-col gap-2 max-w-md bg-white rounded-xl hover:shadow-lg overflow-hidden">
                             <div className="min-h-40 flex-shrink-0 relative bg-primary"></div>
