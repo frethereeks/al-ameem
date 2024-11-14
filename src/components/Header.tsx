@@ -43,7 +43,7 @@ export default function Header() {
                         </form>
                         {
                             headerLinks.map(link => (
-                                <Link key={link.id} href={link.url} className="lg:flex-1 p-2 lg:px-4 font-semibold lg:text-center text-primary hover:text-white bg-white hover:bg-primary lg:rounded-lg capitalize">{link.title}</Link>
+                                <Link key={link.id} href={link.url} className="lg:flex-1 p-2 lg:px-4 font-semibold lg:text-center text-primary hover:text-white bg-white hover:bg-primary lg:rounded-2xl capitalize">{link.title}</Link>
                             ))
                         }
                     </div>

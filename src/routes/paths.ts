@@ -40,5 +40,6 @@ export const appRoutePaths = {
     ...authRoutes,
     ...adminRoutes,
     ...publicRoutes,
-    googleMap: `https://maps.google.com/maps?width=100%25&height=600&hl=en&q=Olusegun%20Obasajo%20Way,%20secondary,%20Abuja,%20Nigeria+(Oakyard%20orders)&t=&z=14&ie=UTF8&iwloc=B&output=embed`
+    // googleMap: `https://maps.app.goo.gl/7q2hgr9obyQ3n1BUA`
+    googleMap: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63046.03375002715!2d7.4210509825374!3d9.029321524200391!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1035165ba88bee7d%3A0xdf337f9cbe52f432!2sWara%2C%20Kebbi%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1731548770732!5m2!1sen!2sus`
 }

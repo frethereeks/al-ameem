@@ -20,7 +20,7 @@ export default function ContactPage() {
             </div>
           </aside>
           <aside className="relative bg-primary rounded-xl min-h-60 overflow-hidden lg:col-span-2 grid place-items-center">
-            <iframe loading='lazy' width="100%" height="100%" src={appRoutePaths.googleMap}></iframe>
+            <iframe loading='lazy' allowFullScreen={false} referrerPolicy='no-referrer-when-downgrade' width="100%" height="100%" src={appRoutePaths.googleMap}></iframe>
           </aside>
         </div>
       </section>
