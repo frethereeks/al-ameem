@@ -14,16 +14,15 @@ export const authRoutes = {
  */
 export const adminRoutes = {
     admindashboard: "/admin/dashboard",
-    adminorders: "/admin/orders",
-    adminordersEdit: (id:string) =>  `/admin/orders/edit/${id}`,
-    adminsingleProperty: (id:string) =>  `/admin/orders/${id}`,
+    adminmenu: "/admin/menu",
+    adminmenuEdit: (id:string) =>  `/admin/menu/edit/${id}`,
     adminprofile: "/admin/profile",
     adminsales: "/admin/sales",
 }
 
 /**
  * Public Routes
- * This is a list of routes or pages that are accessible to the everyone without a need to login  e.g homepage, orders, contact us etc
+ * This is a list of routes or pages that are accessible to the everyone without a need to login  e.g homepage, menu, contact us etc
  */
 export const publicRoutes = {
     home: "/",

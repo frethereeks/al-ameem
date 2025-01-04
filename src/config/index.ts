@@ -15,7 +15,8 @@ export const config = {
         API_KEY: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY || "674181944781841", //look into not exposing this values wither via api endpoint or next ....
         UPLOAD_PRESET:
             process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || "egfpi8od",
-        CLOUD_NAME: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "elimi_dev",
+        CLOUD_NAME: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "dnl81n8vu",
+        API_SECRET: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET || "sssshhhhh"
     },
     CONTENTFUL: {
         SPACE_ID: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || "9q6wzkaz06243a0x6",

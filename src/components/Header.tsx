@@ -49,12 +49,12 @@ export default function Header() {
                     </div>
                 </nav>
                 <div className="flex-1 flex lg:justify-center items-center flex-shrink-0">
-                    <Link href={appRoutePaths.home} className='text-primary text-2xl md:text-3xl lg:text-5xl font-medium font-eugusto leading-none'>Al-Ameen <span className='text-secondary flex text-sm lg:text-2xl text-center md:tracking-widest uppercase -my-1 lg:-my-2'>Confectionary</span></Link>
+                    <Link href={appRoutePaths.home} className='text-primary text-2xl md:text-3xl lg:text-4xl font-medium font-eugusto leading-none'>Al-Ameen <span className='text-secondary flex text-sm lg:text-lg text-center md:tracking-widest uppercase -my-1 lg:-my-2'>Confectionary</span></Link>
                 </div>
                 <div className='flex-1 flex-shrink-0 flex justify-end items-center gap-4'>
                     <form action="" className={`hidden lg:flex gap-2 border-b-2 border-primary max-w-lg`}>
-                        <input type="search" name="search" id="search" placeholder='Search...' required className="flex-1 p-2 text-sm lg:text-base text-text" />
-                        <button className="bg-transparent grid place-items-center text-primary text-lg md:text-xl cursor-pointer"><IoSearchOutline /></button>
+                        <input type="search" name="search" id="search" placeholder='Search...' required className="flex-1 px-2 py-1 text-sm lg:text-base text-text" />
+                        <button className="bg-transparent grid place-items-center text-primary text-base md:text-lg cursor-pointer"><IoSearchOutline /></button>
                     </form>
                     <div className="relative text-primary text-2xl lg:text-2xl cursor-pointer p-2">
                         <HiOutlineShoppingCart />
