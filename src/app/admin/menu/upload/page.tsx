@@ -24,7 +24,6 @@ import { CldUploadWidget } from 'next-cloudinary';
     );
   }}
 </CldUploadWidget>
-
 */
 
 export default function AdminUploadPage() {

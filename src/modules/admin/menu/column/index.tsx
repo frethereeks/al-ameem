@@ -1,8 +1,9 @@
+import { TMenuProps } from "@/types";
 import { TableColumnsType } from "antd";
 // import { ItemType } from "antd/es/menu/interface";
 import Image from "next/image";
 
-export const MENU_COLUMNS = (): TableColumnsType<TFoodProps> => {
+export const MENU_COLUMNS = (): TableColumnsType<TMenuProps> => {
     return [
         {
             key: "Product Details",
@@ -10,20 +11,26 @@ export const MENU_COLUMNS = (): TableColumnsType<TFoodProps> => {
             render: (_, val) => (
                 <div className="flex gap-2 items-center flex-1">
                     <div className="h-10 w-10 md:h-12 md:w-12 flex-shrink-0 relative bg-primary rounded-md overflow-hidden">
-                        <Image src={val.image} alt={val.title} fill className="absolute left-0 top-0 h-full w-full rounded-md object-cover flex-shrink-0" />
+                        <Image src={val.image} alt={val.name} fill className="absolute left-0 top-0 h-full w-full rounded-md object-cover flex-shrink-0" />
                     </div>
                     <div className="flex flex-col text-secondary">
-                        <h4 className="text-sm md:text-base font-semibold whitespace-nowrap text-primary">{val.title}</h4>
-                        <p className="text-xs md:text-sm text-dark/60 opacity-70 font-medium">&#8358;{val.price.toLocaleString()}</p>
+                        <h4 className="text-sm md:text-base font-semibold whitespace-nowrap text-primary">{val.name}</h4>
                     </div>
                 </div>
             )
         },
         {
-            key: "Quantity Available",
-            title: "Quantity Available",
+            key: "Price",
+            title: "Price",
             render: (_, val) => (
-                <span>{val.qtyAvailable.toLocaleString()}</span>
+                <p className="text-xs md:text-sm text-dark/60 opacity-70 font-medium">&#8358;{val.price.toLocaleString()}</p>
+            )
+        },
+        {
+            key: "Category",
+            title: "Category",
+            render: (_, val) => (
+                <p className="text-xs md:text-sm text-dark/60 opacity-70 font-medium">{val.category.name}</p>
             )
         },
         {
@@ -37,7 +44,7 @@ export const MENU_COLUMNS = (): TableColumnsType<TFoodProps> => {
             key: "Status",
             title: "Status",
             render: (_, val) => (
-                <button className={`py-1 px-4 ${val.status === "ACTIVE" ? 'text-teal-700 bg-secondary/30' : 'bg-grey/60'} rounded-[2rem] text-xs md:text-sm`}>
+                <button className={`py-1 px-4 ${val.status === "VISIBLE" ? 'text-teal-700 bg-teal-100' : 'text-text bg-grey/60'} rounded-[2rem] text-xs`}>
                     {val.status}
                 </button>
             )

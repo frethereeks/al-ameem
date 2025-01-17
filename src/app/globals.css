@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import 'antd/dist/reset.css'; 
 
 *, *::before, *::after {
   outline: 0 !important;
@@ -8,29 +9,22 @@
 }
 
 html, body {
+  position: relative;
   overflow-x: hidden;
+  overflow-y: visible;
   min-height: 100vh;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  .leading-loose {
-    line-height: 1.8;
-  }
-
-  .leading-snug {
-    line-height: 1.6;
-  }
-
-  .shad {
-    box-shadow: 0 0 18px -8px #13426440;
-  }
-}
-
 @layer components {
+  .overlay{
+    @apply top-0 left-0 absolute w-full h-full;
+  }
+  .after-overlay{
+    @apply after:top-0 after:left-0 after:absolute after:w-full after:h-full;
+  }
+  .before-overlay{
+    @apply before:top-0 before:left-0 before:absolute before:w-full before:h-full;
+  }
   .heading-one{
     @apply font-bold text-text text-3xl md:text-4xl;
   }
@@ -65,6 +59,25 @@ html, body {
     @apply bg-primary py-2 px-4 md:px-6 rounded-md text-white text-xs md:text-sm font-medium cursor-pointer whitespace-nowrap;
   }
 }
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .leading-loose {
+    line-height: 1.8;
+  }
+
+  .leading-snug {
+    line-height: 1.6;
+  }
+
+  .shad {
+    box-shadow: 0 0 18px -8px #13426440;
+  }
+}
+
 
 @media screen and (max-width: 640px) {
   .container {

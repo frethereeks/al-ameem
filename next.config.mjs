@@ -21,7 +21,8 @@ const nextConfig = {
                 protocol: "http",
             },
         ]
-    }
+    },
+    
 };
 
 // const withPWA = withPWAInit({

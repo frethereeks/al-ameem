@@ -1,7 +1,12 @@
 import React from 'react'
+import SalesContainer from '@/modules/admin/sales/SalesContainer'
+import { fetchSales } from "@/action";
 
-export default function AdminSalesPage() {
+export default async function AdminSalesPage() {
+  const {data, role} = await fetchSales()
   return (
-    <div>AdminSalesPage</div>
+    <>
+      <SalesContainer data={data!} role={role!} />
+    </>
   )
 }

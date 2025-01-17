@@ -1,80 +1,114 @@
 "use client"
 import React, { useState } from 'react'
-import { Flex, Layout, Menu } from 'antd'
+import { Flex, Layout } from 'antd'
 import Link from 'next/link'
 import { LuText } from 'react-icons/lu'
-
+import { GrLogout } from "react-icons/gr";
 import Footer from './Footer'
 import { sideBarLinks } from '@/data/sideBarLinks'
 import { appRoutePaths } from '@/routes/paths'
-import { usePathname } from 'next/navigation'
+import { redirect, usePathname } from 'next/navigation'
+import { signOut } from 'next-auth/react'
 
-export default function DashLayout({ children }: { children: React.ReactNode }) {
+const { Content, Header, Sider } = Layout
+
+export default function DashLayout({ children, image }: { children: React.ReactNode, image: React.ReactNode }) {
     const [openSideBar, setOpenSidebar] = useState<boolean>(false)
-    const [siderShow, setSiderShow] = useState<"xs" | "lg">("xs")
     const pathname = usePathname()
 
-    // useEffect(() => {
-    //     // window.onresize = () => {
-    //     //     const { width } = window.screen
-    //     // }
-    // }, [window.screen.width])
+    const siderStyle: React.CSSProperties = {
+        overflow: 'auto',
+        height: '100vh',
+        position: 'fixed',
+        insetInlineStart: 0,
+        top: 0,
+        bottom: 0,
+        scrollbarWidth: 'thin',
+        scrollbarGutter: 'stable',
+    };
+
+    const handleLogout = (e: React.MouseEvent) => {
+        e.preventDefault()
+        signOut({ callbackUrl: appRoutePaths.signin })
+        redirect(appRoutePaths.home)
+    }
 
     return (
         <main className='flex flex-col'>
-            <Flex vertical>
-                <Layout className='min-h-screen light flex flex-col'>
-                    <Layout.Header className='fixed w-full left-0 top-0 p-0' style={{ padding: 0, margin: 0, zIndex: 60, position: "fixed" }}>
-                        <div className="bg-white flex justify-between gap-8 w-full p-4">
-                            <div className="flex lg:justify-center items-center flex-shrink-0 border-b border-b-slate-200">
-                                <Link href={appRoutePaths.home} className='text-primary text-lg md:text-xl lg:text-2xl font-medium font-eugusto leading-none'>Al-Ameen <span className='text-secondary flex text-sm lg:text-base text-center md:tracking-tight uppercase -my-1 lg:-my-2'>Confectionary</span></Link>
-                            </div>
-                            {/* <form className="flex items-center gap-2 border-b-[2px] border-primary ml-52 w-full max-w-lg md:max-w-xl">
+            <Layout hasSider={openSideBar}>
+                <Sider
+                    breakpoint={"xl"}
+                    collapsible
+                    trigger={null}
+                    collapsedWidth={0}
+                    theme={"light"}
+                    collapsed={openSideBar}
+                    style={siderStyle}
+                    className='flex flex-col pt-4'
+                >
+                    <div className="flex lg:justify-center items-center flex-shrink-0 relative after:absolute after:h-[.05rem] after:w-[90%] after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-slate-200 p-4">
+                        <Link href={appRoutePaths.home} className='text-primary text-lg md:text-xl lg:text-2xl font-medium font-eugusto leading-none'>Al-Ameen <span className='text-secondary flex text-sm lg:text-base text-center md:tracking-tight uppercase -my-1 lg:-my-2'>Confectionary</span></Link>
+                    </div>
+                    <div className='sticky top-0 left-0 h-full p-4 bg-white flex-1 flex flex-col justify-between gap-10'>
+                        <div className="flex-1 flex flex-col">
+                            {
+                                sideBarLinks.map(el => (
+                                    <Link key={el.id} href={el.link} className={`button ${pathname.includes(el.link) ? "bg-primary text-white" : "bg-white text-primary"} flex justify-start items-center gap-2 py-2`}>
+                                        <span className="w-6 text-lg">{el.icon}</span>
+                                        <p className='text-base'>{el.title}</p>
+                                    </Link>
+                                ))
+                            }
+                        </div>
+                        <button onClick={handleLogout} className={`button sticky left-4 bottom-4 bg-secondary text-white flex items-center gap-2 py-1.5`}>
+                            <span className="w-6 text-lg"><GrLogout /></span>
+                            <p className='text-base'>Logout</p>
+                        </button>
+                    </div>
+                </Sider>
+                <Layout style={{ marginInlineStart: openSideBar ? 0 : 200 }}>
+                    <Header
+                        style={{
+                            // position: 'sticky',
+                            top: 0,
+                            padding: 0,
+                            zIndex: 1,
+                            width: '100%',
+                            display: 'flex',
+                            alignItems: 'center',
+                        }}
+                    >
+                        <div className="bg-white flex justify-end gap-8 w-full p-4">
+                            {/* 
+                            <form className="flex items-center gap-2 border-b-[2px] border-primary ml-52 w-full max-w-lg md:max-w-xl">
                                 <input type='search' placeholder='What would you like to eat?' className='flex-1 text-sm lg:text-sm border-transparent hover:border-transparent bg-transparent text-primary outline-none hover:outline-none' />
                                 <button type="submit" className='p-2'>
                                     <IoSearchOutline className='text-secondary' />
                                 </button>
-                            </form> */}
-                            {/* <button onClick={() => setOpenSidebar(!openSideBar)} className='group p-2 bg-secondary/20 hover:bg-primary text-primary hover:text-white text-xl rounded-md ml-auto mx-4'> */}
-                            <button onClick={() => setSiderShow(prev => prev === "xs" ? "lg" : "xs")} className={`group py-1 px-2 bg-secondary/50 hover:bg-primary text-primary hover:text-white text-xl rounded-md ml-auto mx-4`}>
-                                <LuText className={`${siderShow ? 'scale-100' : '-scale-100'}`} />
-                            </button>
+                            </form> 
+                            */}
+                            {/* <button onClick={() => setOpenSidebar(!openSideBar)} className='group p-2 bg-secondary/20 hover:bg-primary text-primary hover:text-white text-xl rounded-md ml-auto mx-4'> 
+                            */}
+                            <div className="flex gap-2">
+                                {image}
+                                <button onClick={() => setOpenSidebar(prev => !prev)} className={`group py-0 px-2 bg-secondary hover:bg-secondary/80 text-white text-lg rounded-md ml-auto mx-4`}>
+                                    <LuText className={`${openSideBar ? 'scale-100' : '-scale-100'}`} />
+                                </button>
+                            </div>
                         </div>
-                    </Layout.Header>
-                    <Layout className='flex' style={{marginTop: 50}}>
-                        <Layout.Sider
-                            breakpoint={siderShow}
-                            collapsible
-                            trigger={null}
-                            collapsedWidth={0}
-                            theme={"light"}
-                            // collapsed={openSideBar}
-                            style={{ padding: 0 }}
-                            className='flex flex-col p-4 pt-28'
-                        >
-                            <Flex vertical justify='space-between' className='sticky top-0 left-0 h-full py-10 px-4 bg-white flex flex-col gap-10'>
-                                <div className="flex-1 flex flex-col sticky top-0 left-0 h-full w-full pt-20">
-                                    {/* <Menu mode='inline' defaultSelectedKeys={[`8206339`]} className='overflow-hidden bg-transparent border-0'>
-
-                                    </Menu> */}
-                                        {
-                                            sideBarLinks.map(el => (
-                                                <Link key={el.id} href={el.link} className={`button ${pathname.includes(el.link) ? "bg-primary/50 text-white" : "bg-white text-primary"} flex items-center gap-2 py-3`}>
-                                                    <span className="w-20">{el.icon}</span>
-                                                    <p>{el.title}</p>
-                                                </Link>
-                                            ))
-                                        }
-                                </div>
-                            </Flex>
-                        </Layout.Sider>
-                        <Flex vertical className='w-full' style={{ paddingTop: 20 }}>
-                            <Layout.Content className='bg-background p-4 pt-12'>{children}</Layout.Content>
-                            <Footer />
-                        </Flex>
-                    </Layout>
+                    </Header>
+                    <Flex vertical className='w-full' style={{ paddingTop: 20 }}>
+                        <Content style={{
+                            margin: '14px 4px',
+                            // padding: 24,
+                            minHeight: 280,
+                            // background: colorBgContainer,
+                            // borderRadius: borderRadiusLG,
+                        }} className='bg-background rounded-lg p-4'>{children}</Content>
+                        <Footer />
+                    </Flex>
                 </Layout>
-            </Flex>
+            </Layout>
         </main>
     )
 }

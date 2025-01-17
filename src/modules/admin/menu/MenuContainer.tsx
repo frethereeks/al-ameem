@@ -1,91 +1,85 @@
 "use client"
 import { useState } from "react"
 import { Modal, Table, TableProps } from 'antd'
-import React from 'react'
 import { AiOutlineDelete } from "react-icons/ai";
 import { BsPencil } from "react-icons/bs";
+import React from 'react'
 import { MENU_COLUMNS } from './column'
-import { menuData } from './constants';
-import Link from "next/link";
-import { appRoutePaths } from "@/routes/paths";
-import MenuUpload from "./components/MenuUpload";
-import { Header3 } from "@/components/ui/Typography";
-// import { config } from "@/config";
+import { TCategory, TMenuProps } from "@/types";
+import { DeleteModal } from "@/components";
+import { AddMenu } from "./components";
+import { $Enums } from "@prisma/client";
 
-// const handleEdit = async(id) => {}
-// const handleDelete = async(id) => {}
+type PageProps = {
+    data: TMenuProps[] | undefined
+    category: TCategory[] | undefined
+    role: $Enums.Role
+}
 
-export default function MenuContainer() {
-
-    // console.log({
-    //     cloud_name: config.CLOUDINARY.CLOUD_NAME,
-    //     api_key: config.CLOUDINARY.API_KEY,
-    //     api_secret: config.CLOUDINARY.API_SECRET,
-    // })
-
+export default function MenuContainer({ data, category, role }: PageProps) {
     const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([])
-    const [rowType, setRowType] = useState<"checkbox" | "radio">("checkbox")
     const [deleteModal, setDeleteModal] = useState<boolean>(false)
     const [uploadModal, setUploadModal] = useState<boolean>(false)
+    const [selectedData, setSelectedData] = useState<TMenuProps>()
 
-    const rowSelection: TableProps<TFoodProps>["rowSelection"] = {
+    React.useEffect(() => {
+        setSelectedData(data?.find(el => el.id === selectedRowKeys[0]))
+        // eslint-disable-next-line
+    }, [selectedRowKeys])
+
+    const rowSelection: TableProps<TMenuProps>["rowSelection"] = {
         selectedRowKeys,
-        type: rowType,
+        type: "checkbox",
         onChange(keys: React.Key[]) {
-            setSelectedRowKeys(keys)
-            console.log({ selectedRowKeys })
+            if (role === "USER") {
+                return false;
+            }
+            else setSelectedRowKeys(keys)
         }
     }
 
-    const handleDelete = async () => {
-        alert(`The Foods with IDs: ${selectedRowKeys.join(",")} have been deleted`)
-        setSelectedRowKeys([])
-        setDeleteModal(!deleteModal)
-    }
-    // const actionButtons = () => <>
-    //     <button onClick={() => handleEdit(id)} className="group cursor-pointer h-8 w-9 grid place-items-center rounded-md text-base relative bg-secondary/10 hover:bg-secondary/30 text-primary hover:text-dark" >
-    //         <BsPencil />
-    //     </button>
-    //     <button onClick={} title="Delete Msg" className="group cursor-pointer h-8 w-9 grid place-items-center rounded-md text-xl relative bg-danger/10 hover:bg-danger/15 text-danger hover:text-danger" >
-    //         <AiOutlineDelete />
-    //     </button>
-    // </>
     return (
         <>
-            <Modal open={deleteModal} onCancel={() => setDeleteModal(!deleteModal)} onOk={handleDelete} className="py-6">
-                <Header3 className="py-4">Confirm Delete</Header3>
-                <p className="text-sm sm:text-base md:text-lg text-dark/80 font-medium">Are you sure you want to proceed with this? This action is not reversible</p>
+            <DeleteModal key={"8012469234"} openModal={deleteModal} closeModal={setDeleteModal} data={selectedRowKeys} table='menu' />
+            <Modal style={{ zIndex: 1040, position: "relative" }} open={uploadModal} afterClose={() => {
+                setSelectedRowKeys([])
+                setSelectedData(undefined)
+            }} onCancel={() => setUploadModal(!uploadModal)} cancelButtonProps={{ style: { width: "93.5%", marginLeft: "0", marginRight: "1rem" } }} okButtonProps={{ style: { display: "none" } }}>
+                <AddMenu data={selectedData} category={category} closeModal={setUploadModal} />
             </Modal>
-            <Modal open={uploadModal} onCancel={() => setUploadModal(!uploadModal)} cancelButtonProps={{ style: {width: "93.5%", marginLeft: "0", marginRight: "1rem"}}} okButtonProps={{ style: {display: "none"}}}>
-                <MenuUpload />
-            </Modal>
-            <section className='flex flex-col gap-4 min-w-96 overflow-x-scroll'>
-                <div className="flex bg-white justify-between gap-4 p-4">
-                    <div className="flex items-center gap-2">
-                        <h4 className="heading-one font-semibold">Menu Contents</h4>
-                        <button onClick={() => setUploadModal(!uploadModal)} className="button">Upload</button>
-                        <button onClick={() => setRowType(prev => (prev === "checkbox" ? "radio" : "checkbox"))} className={`button`}>{rowType === "checkbox" ? "Edit Mode" : "Delete Mode"}</button>
+            <>
+                <section className='flex flex-col gap-4 min-w-96 overflow-x-scroll relative overflow-y-visible'>
+
+                    <div className="flex bg-white justify-between gap-4 p-4">
+                        <div className="flex items-center gap-2">
+                            <h4 className="text-text text-lg md:text-xl font-semibold pr-4">Menu List</h4>
+                            {role !== "USER" && <button onClick={() => setUploadModal(!uploadModal)} className="button bg-secondary py-1">Create Record</button>}
+                        </div>
+                        <div className="flex gap-2">
+                            {role !== "USER" && (
+                                <>
+                                    {(selectedRowKeys.length === 1) && <button onClick={() => setUploadModal(!uploadModal)} className="button flex items-center gap-2"><BsPencil /> Edit</button>}
+                                    {(selectedRowKeys.length > 0) && <button onClick={() => setDeleteModal(!deleteModal)} className="button bg-secondary flex items-center gap-2"><AiOutlineDelete /> Delete Selected</button>}
+                                </>
+                            )}
+                        </div>
                     </div>
-                    <div className="flex gap-2">
-                        {(selectedRowKeys.length > 0 && rowType === "radio") && <Link href={appRoutePaths.adminmenuEdit(selectedRowKeys[0].toString())} className="button flex items-center gap-2"><BsPencil /> Edit</Link>}
-                        {(selectedRowKeys.length > 0 && rowType === "checkbox") && <button onClick={() => setDeleteModal(!deleteModal)} className="button bg-secondary flex items-center gap-2"><AiOutlineDelete /> Delete Selected</button>}
+                    <div className="card bg-white flex flex-col p-4">
+                        <Table
+                            pagination={{
+                                hideOnSinglePage: true,
+                                // pageSize: 10,
+                                showSizeChanger: false,
+                                showQuickJumper: false,
+                            }}
+                            scroll={{ x: "max-content" }}
+                            rowSelection={{ ...rowSelection }}
+                            dataSource={role === "USER" ? data : data?.map(el => ({ ...el, key: el.id }))}
+                            columns={MENU_COLUMNS()}
+                        />
                     </div>
-                </div>
-                <div className="card bg-white flex flex-col p-4">
-                    <Table
-                        pagination={{
-                            hideOnSinglePage: true,
-                            // pageSize: 10,
-                            showSizeChanger: false,
-                            showQuickJumper: false,
-                        }}
-                        scroll={{ x: "max-content" }}
-                        rowSelection={{ ...rowSelection }}
-                        dataSource={menuData.map(el => ({ ...el, key: el.id }))}
-                        columns={MENU_COLUMNS()}
-                    />
-                </div>
-            </section>
+                </section>
+            </>
         </>
     )
 }

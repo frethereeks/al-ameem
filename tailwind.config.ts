@@ -4,7 +4,9 @@ export default {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/modules/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './node_modules/antd/dist/reset.css',
   ],
   theme: {
     extend: {
@@ -16,7 +18,7 @@ export default {
         secondary: "#ee791d",
         "light-secondary": "#ffe8ca",
         background: "#fcf9f6",
-        // text: "#b8a8a8",
+        danger: "#f66",
         text: "#584455",
       },
       fontFamily: {

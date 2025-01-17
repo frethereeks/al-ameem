@@ -1,6 +1,6 @@
 import { appRoutePaths } from "@/routes/paths"
-import { GrDashboard, GrLineChart, GrPersonalComputer } from "react-icons/gr"
-import { IoFastFoodSharp } from "react-icons/io5";
+import { GrUserSettings, GrUserWorker } from "react-icons/gr"
+import { LuLayoutDashboard, LuScrollText, LuUtensilsCrossed } from "react-icons/lu";
 
 type SidebarProps = {
     id: string
@@ -13,25 +13,31 @@ export const sideBarLinks: SidebarProps[] = [
     {
         id: '8q2s03x5068q20',
         title: 'Dashboard',
-        icon: <GrDashboard />,
+        icon: <LuLayoutDashboard />,
         link: appRoutePaths.admindashboard,
     },
     {
         id: '8q2s03x5068q21',
-        title: 'Sales',
-        icon: <GrLineChart />,
-        link: appRoutePaths.adminsales,
+        title: 'Users',
+        icon: <GrUserWorker />,
+        link: appRoutePaths.adminuser,
     },
     {
         id: '8q2s03x5068q22',
-        title: 'Menu',
-        icon: <IoFastFoodSharp />,
-        link: appRoutePaths.adminmenu,
+        title: 'Sales',
+        icon: <LuScrollText />,
+        link: appRoutePaths.adminsales,
     },
     {
         id: '8q2s03x5068q23',
+        title: 'Menu',
+        icon: <LuUtensilsCrossed />,
+        link: appRoutePaths.adminmenu,
+    },
+    {
+        id: '8q2s03x5068q24',
         title: 'Profile',
-        icon: <GrPersonalComputer />,
+        icon: <GrUserSettings />,
         link: appRoutePaths.adminprofile,
     },
 ]

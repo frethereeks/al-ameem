@@ -1,10 +1,12 @@
+import { fetchMenu } from '@/action'
 import MenuContainer from '@/modules/admin/menu/MenuContainer'
 import React from 'react'
 
-export default function AdminMenuPage() {
+export default async function AdminMenuPage() {
+  const {data, role} = await fetchMenu()
   return (
     <main>
-      <MenuContainer />
+      <MenuContainer data={data?.data} category={data?.category} role={role!} />
     </main>
   )
 }

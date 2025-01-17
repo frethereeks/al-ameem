@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast"
 import ThemeProvider from "@/provider/ThemeProvider";
 import { AntdRegistry } from '@ant-design/nextjs-registry'
 import DashLayout from "@/modules/admin/layout/DashLayout";
+import DashImage from "@/modules/admin/layout/DashImage";
 
 const eugusto = localFont({ src: "../../fonts/Eugusto.otf", variable: "--eugusto", weight: "100 900", });
 const urbanist = Urbanist({ subsets: ["latin"], variable: "--urbanist", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], fallback: ["cursive"] });
@@ -21,13 +22,14 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+
     return (
         <html lang="en">
-            <body className={`${eugusto.variable} ${inspiration.variable} ${urbanist.variable} antialiased font-urbanist`}>
+            <body className={`${eugusto.variable} ${inspiration.variable} ${urbanist.variable} antialiased font-urbanist relative`}>
                 <AntdRegistry>
                     <ThemeProvider>
                         <Toaster />
-                        <DashLayout>
+                        <DashLayout image={<DashImage />}>
                             <div className="font-urbanist min-h-[80vh]"> {children} </div>
                         </DashLayout>
                     </ThemeProvider>

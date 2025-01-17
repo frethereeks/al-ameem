@@ -4,7 +4,7 @@
  */
 export const authRoutes = {
     // auth
-    signIn: "/login",
+    signIn: "/auth/signin",
     signUp: "/register",
 };
 
@@ -15,6 +15,8 @@ export const authRoutes = {
 export const adminRoutes = {
     admindashboard: "/admin/dashboard",
     adminmenu: "/admin/menu",
+    admincontact: "/admin/contact",
+    adminuser: "/admin/users",
     adminmenuEdit: (id:string) =>  `/admin/menu/edit/${id}`,
     adminprofile: "/admin/profile",
     adminsales: "/admin/sales",
@@ -28,7 +30,12 @@ export const publicRoutes = {
     home: "/",
     about: "/about",
     menu: "/menu",
-    singleOrder: (id: string) => `/order/${id}`,
+    search: "/search",
+    singleMenu: (id: string) => `/menu/${id}`,
+    signin: "/auth/signin",
+    signup: "/auth/signup",
+    verify: "/auth/verify",
+    logout: "/auth/logout",
     contact: "/contact"
 }
 /**

@@ -1,7 +1,7 @@
 import MenuContainer from "../MenuContainer";
-import MenuUpload from "./MenuUpload";
+import AddMenu from "./AddMenu";
 
 export {
     MenuContainer,
-    MenuUpload,
+    AddMenu,
 }

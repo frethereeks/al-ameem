@@ -4,10 +4,11 @@ import React from 'react'
 import Link from 'next/link'
 import { headerLinks } from '@/data'
 import { appRoutePaths } from '@/routes/paths'
-import { IoCloseOutline, IoSearchOutline } from 'react-icons/io5'
+import { IoCloseOutline } from 'react-icons/io5'
 import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { usePathname } from 'next/navigation'
+import SearchInput from './SearchInput'
 
 export default function Header() {
     const [navshow, setNavshow] = React.useState(false)
@@ -37,10 +38,9 @@ export default function Header() {
                         <div onClick={() => setNavshow(!navshow)} className="absolute top-2 right-3 lg:hidden bg-text/30 text-primary text-3xl cursor-pointer p-1 grid place-items-center font-extrabold rounded-xl">
                             <IoCloseOutline />
                         </div>
-                        <form action="" className={`flex absolute top-12 left-0 w-[90%] mx-4 lg:hidden gap-2 border-b-2 border-primary`}>
-                            <input type="search" name="search" id="search" placeholder='Search...' required className="flex-1 p-4 text-sm lg:text-base text-text" />
-                            <button className="bg-transparent grid place-items-center text-primary text-lg md:text-2xl cursor-pointer"><IoSearchOutline /></button>
-                        </form>
+                        <div className={`flex absolute top-12 left-0 w-[90%] mx-4 lg:hidden gap-2 border-b-2 border-primary`}>
+                            <SearchInput />
+                        </div>
                         {
                             headerLinks.map(link => (
                                 <Link key={link.id} href={link.url} className="lg:flex-1 p-2 lg:px-4 font-semibold lg:text-center text-primary hover:text-white bg-white hover:bg-primary lg:rounded-2xl capitalize">{link.title}</Link>
@@ -52,10 +52,9 @@ export default function Header() {
                     <Link href={appRoutePaths.home} className='text-primary text-2xl md:text-3xl lg:text-4xl font-medium font-eugusto leading-none'>Al-Ameen <span className='text-secondary flex text-sm lg:text-lg text-center md:tracking-widest uppercase -my-1 lg:-my-2'>Confectionary</span></Link>
                 </div>
                 <div className='flex-1 flex-shrink-0 flex justify-end items-center gap-4'>
-                    <form action="" className={`hidden lg:flex gap-2 border-b-2 border-primary max-w-lg`}>
-                        <input type="search" name="search" id="search" placeholder='Search...' required className="flex-1 px-2 py-1 text-sm lg:text-base text-text" />
-                        <button className="bg-transparent grid place-items-center text-primary text-base md:text-lg cursor-pointer"><IoSearchOutline /></button>
-                    </form>
+                    <div className={`hidden lg:flex gap-2 border-b-2 border-primary max-w-lg`}>
+                        <SearchInput />
+                    </div>
                     <div className="relative text-primary text-2xl lg:text-2xl cursor-pointer p-2">
                         <HiOutlineShoppingCart />
                         <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-secondary text-white text-xs grid place-items-center">5</div>
