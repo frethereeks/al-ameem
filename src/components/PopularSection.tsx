@@ -1,23 +1,15 @@
 "use client"
 
 import React from 'react'
-import { Header1, Header5, Header4, Para2 } from './ui/Typography'
-import Link from 'next/link'
-import { appRoutePaths } from '@/routes/paths'
-import { HiOutlineShoppingBag } from "react-icons/hi";
+import { Header1 } from './ui/Typography'
 import AppSlider from './ui/AppSlider';
-import toast from 'react-hot-toast';
 // import { popularFoods } from '@/data'
 import { Menu } from '@prisma/client'
-import Image from 'next/image'
 import MenuCard from './MenuCard'
 
 
-export default function PopularSection({data}: {data: Menu[] | undefined}) {
-    
-    const handleAddToCart = (food: Menu) => {
-        toast.success(`${food.name} successfully added to cart.`)
-    }
+export default function PopularSection({ data }: { data: Menu[] | undefined }) {
+
     return (
         <>
             <section className="py-10 md:py-10 lg:py-20 px-4">

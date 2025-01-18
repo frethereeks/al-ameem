@@ -12,8 +12,11 @@ type TPageParams = {
 }
 
 export async function generateStaticParams() {
-    const res = await getPageMenu()
-    return res?.data?.menu.map(el => ({ slug: el.slug }))
+    const res = await getPageMenu();
+    if (res?.data?.menu) {
+        return res.data.menu.map(el => ({ slug: el.slug }));
+    }
+    return [];
 }
 
 export async function generateMetadata({ params: { slug } }: TPageParams) {
@@ -33,7 +36,7 @@ export default async function SingleFoodPage({ params: { slug } }: TPageParams) 
             <section className="py-5 md:py-10 lg:py-20 px-4">
                 <div className="container mx-auto lg:px-10 grid lg:grid-cols-2 gap-8 lg:justify-center">
                     <aside className="relative overflow-hidden bg-light rounded-xl">
-                        <Image src={data?.image || ""} alt={data?.name!} fill className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex`} />
+                        <Image src={data?.image || ""} alt={data?.name ?? "Food Image"} fill className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex`} />
                     </aside>
                     <aside className="relative flex flex-col gap-2 md:gap-4 py-10">
                         <Header3 className='text-secondary font-inspiration'>{data?.category?.name}</Header3>

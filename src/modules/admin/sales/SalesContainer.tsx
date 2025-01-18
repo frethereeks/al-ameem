@@ -24,6 +24,7 @@ export default function SalesContainer({ data, role }: PageProps) {
     React.useEffect(() => {
         setSelectedData(data?.find(el => el.id === selectedRowKeys[0]))
         // setSelectedRowKeys(selectedRowKeys)
+        //eslint-disable-next-line
     }, [selectedRowKeys])
 
     const rowSelection: TableProps<TSaleProps>["rowSelection"] = {

@@ -4,9 +4,6 @@ import localFont from "next/font/local";
 import "../globals.css";
 import { Toaster } from "react-hot-toast"
 import { Header, Footer } from "@/components";
-// import { SessionProvider } from "next-auth/react";
-// import { authOptions } from "@/lib/authOptions";
-// import { getServerSession } from "next-auth";
 import { Provider } from "@/provider/SessionProvider";
 import ThemeProvider from "@/provider/ThemeProvider";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
@@ -25,7 +22,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const session = await getServerSession(authOptions);
+  
   return (
     <html lang="en">
       <body

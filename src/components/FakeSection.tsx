@@ -13,6 +13,7 @@ export default function FakeSection() {
 
     const handlePageChange = (page: number) => {
         setCurrentPage(page)
+        setData(prev => prev)
     }
 
     return (
@@ -43,7 +44,7 @@ export default function FakeSection() {
                 <div className="flex justify-end gap-2">
                     {
                         Array.from({ length: Math.ceil(popularFoods.length / PAGE_SIZE) }).map((
-                            (item: any, index) => (
+                            (_, index) => (
                                 <button
                                     key={index}
                                     onClick={() => handlePageChange(index)}

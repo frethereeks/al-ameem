@@ -7,8 +7,10 @@ import React, { useState } from 'react'
 export default function SearchContainer({ search }: { search?: Menu[] }) {
     const [data, setData] = useState<Menu[]>(search ?? [])
     const [currentPage, setCurrentPage] = useState<number>(0)
+    
     const handlePageChange = (page: number) => {
         setCurrentPage(page)
+        setData(prev => prev)
     }
 
     return (
@@ -25,7 +27,7 @@ export default function SearchContainer({ search }: { search?: Menu[] }) {
                     <div className="flex justify-end gap-2">
                         {
                             Array.from({ length: Math.ceil(data?.length / DEFAULT_PAGE_SIZE) }).map((
-                                (item: any, index) => (
+                                (_, index) => (
                                     <button
                                         key={index}
                                         onClick={() => handlePageChange(index)}

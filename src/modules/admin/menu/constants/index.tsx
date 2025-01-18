@@ -1,6 +1,5 @@
-import { TFoodProps } from "@/types";
 
-export const menuData: TFoodProps[] = [
+export const menuData = [
     {
         id: "1",
         image: "",
