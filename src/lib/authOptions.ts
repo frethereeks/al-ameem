@@ -84,7 +84,7 @@ export const authOptions: NextAuthOptions = {
                     ...token,
                     id: currentUser.id,
                     email: currentUser.email,
-                    // image: currentUser.image,
+                    image: currentUser.image,
                     name: `${currentUser.firstname} ${currentUser.lastname}`,
                     role: currentUser.role
                 }
