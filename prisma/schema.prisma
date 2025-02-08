@@ -79,7 +79,7 @@ model Menu {
   slug        String     @db.VarChar(500)
   image       String     @db.LongText()
   price       Float      @default(0)
-  popular     Boolean   @default(false)
+  popular     Boolean    @default(false)
   description String?    @db.MediumText()
   status      FoodStatus @default(VISIBLE)
   createdAt   DateTime   @default(now())

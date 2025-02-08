@@ -2,12 +2,13 @@
 
 import { appRoutePaths } from '@/routes/paths'
 import { Menu } from '@prisma/client'
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { Header5, Para3 } from './ui/Typography'
 import toast from 'react-hot-toast'
 import { HiOutlineShoppingBag } from 'react-icons/hi2'
+import { ASSETS_URL } from '@/constants'
+// import { Image } from 'antd'
 
 export default function MenuCard(food: Menu) {
 
@@ -19,7 +20,7 @@ export default function MenuCard(food: Menu) {
       <>
           <aside key={food.id} className="shadow-lg shadow-primary/30 relative flex flex-col gap-2 max-w-md bg-white rounded-xl hover:shadow-lg overflow-hidden">
               <Link href={`${appRoutePaths.menu}/${food.slug}`} className="min-h-48 flex-shrink-0 relative bg-primary">
-                  <Image src={food?.image || ""} alt={food.name} fill className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex`} />
+                  <img src={food?.image ?? ASSETS_URL['pepper_assorted']} alt={food.name} className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex`} />
               </Link>
               <div className="flex-1 flex flex-col justify-between gap-2 lg:gap-3 p-4 pt-1.5">
                   <Link href={`${appRoutePaths.menu}/${food.slug}`} className="flex-1 flex flex-col gap-1">

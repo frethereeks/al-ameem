@@ -1,6 +1,6 @@
 import { getPageMenu } from "@/action";
 import { AboutSection, HappyClientSection, Newsletter, PopularSection } from "@/components";
-import FakeSection from "@/components/FakeSection";
+// import FakeSection from "@/components/FakeSection";
 import { Header1, Header3, Para1 } from "@/components/ui/Typography";
 import { ASSETS_URL } from "@/constants";
 import { appRoutePaths } from "@/routes/paths";
@@ -12,6 +12,7 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 export default async function Home() {
   const res = await getPageMenu()
   const menu = res.data?.menu
+  // console.log({res, menu})
 
   return (
     <main className="flex flex-col bg-background">
@@ -29,7 +30,7 @@ export default async function Home() {
         </div>
       </section>
       <PopularSection data={menu} />
-      <FakeSection />
+      {/* <FakeSection /> */}
       <AboutSection />
       <HappyClientSection />
       <Newsletter />
