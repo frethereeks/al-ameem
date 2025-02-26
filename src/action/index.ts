@@ -13,7 +13,6 @@ import { getServerSession } from "next-auth";
 import { signOut } from "next-auth/react";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-// import nodeMailer from "nodemailer"
 
 export const fetchUser = async () => {
     const session = await getServerSession(authOptions);
@@ -37,6 +36,7 @@ const userData = (data: FormData) => ({
     email: data?.get("email")?.valueOf() as string,
     image: data?.get("image")?.valueOf() as string || "",
     plainPassword: data?.get("password")?.valueOf() as string,
+    verifyPassword: data?.get("verifyPassword")?.valueOf() as string,
     role: data?.get("role")?.valueOf() as $Enums.Role || "ROOT",
 })
 
@@ -51,7 +51,7 @@ const menuData = (data: FormData) => ({
     name: data?.get("name")?.valueOf() as string,
     price: Number(data?.get("price")?.valueOf()),
     image: data?.get("image")?.valueOf() as string,
-    popular: data?.get("popular")?.valueOf() as boolean,
+    popular: data?.get("popular")?.valueOf() as string,
     status: data?.get("status")?.valueOf() as $Enums.FoodStatus,
     description: data?.get("description")?.valueOf() as string,
     categoryId: data?.get("categoryId")?.valueOf() as string,
@@ -62,7 +62,7 @@ export const createUser = async (data: FormData) => {
     // }
     const salt = await bcryptjs.genSalt(10)
     const password = await bcryptjs.hash(plainPassword, salt)
-    const imageList = [ "/profile1.png", "/profile2.png", "/profile3.png", "/profile4.png", "/profile5.png",
+    const imageList = ["/profile1.png", "/profile2.png", "/profile3.png", "/profile4.png", "/profile5.png",
     ]
     const image = Math.random() > 0.8 ? imageList[0] : Math.random() > 0.6 ? imageList[1] : Math.random() > 0.4 ? imageList[2] : Math.random() > 0.2 ? imageList[3] : imageList[4]
     // check duplicates
@@ -161,7 +161,7 @@ export const createMessage = async (data: FormData) => {
 
 export const createMenu = async (data: FormData) => {
     const user = await fetchUser()
-    const { name, price, image, description, categoryId, status } = menuData(data)
+    const { name, price, image, description, categoryId, status, popular } = menuData(data)
     const slug = generateSlug(name)
     // check duplicates
     const alreadyExists = await prisma.menu.findFirst({
@@ -177,7 +177,7 @@ export const createMenu = async (data: FormData) => {
     try {
         await prisma.menu.create({
             data: {
-                name, slug, price, image, description, categoryId, userId: user.id, status: status as $Enums.FoodStatus
+                name, slug, price, image, description, categoryId, userId: user.id, status: status as $Enums.FoodStatus, popular: popular === "on" ? true : false
             }
         })
         revalidatePath(appRoutePaths.adminmenu)
@@ -450,9 +450,10 @@ export const getSinglePageMenu = async ({ slug }: { slug: string }) => {
 
 // UPDATE LOGICS
 export const updateUser = async (data: FormData) => {
+    const user = await fetchUser()
     const id = data?.get("id")?.valueOf() as string;
     const status = data?.get("status")?.valueOf() as $Enums.Status;
-    const { firstname, lastname, email, plainPassword, role, image, } = userData(data)
+    const { firstname, lastname, email, plainPassword, role, image, verifyPassword } = userData(data)
 
     const salt = await bcryptjs.genSalt(10)
     const password = await bcryptjs.hash(plainPassword, salt)
@@ -469,19 +470,25 @@ export const updateUser = async (data: FormData) => {
         }
     }
     try {
-        if (plainPassword !== "") {
-            await prisma.user.update({
-                data: { firstname, lastname, email, password, role, image, status, },
-                where: { id }
-            })
+        const passwordMatched = await bcryptjs.compare(verifyPassword, user.password)
+        if (passwordMatched) {
+            if (plainPassword !== "") {
+                await prisma.user.update({
+                    data: { firstname, lastname, email, password, role, image, status, },
+                    where: { id }
+                })
+            }
+            else {
+                await prisma.user.update({
+                    data: { firstname, lastname, email, role, image, status, },
+                    where: { id }
+                })
+            }
         }
         else {
-            await prisma.user.update({
-                data: { firstname, lastname, email, role, image, status, },
-                where: { id }
-            })
+            return { error: true, message: `The Password you have supplied is incorrect.`}
         }
-        revalidatePath(appRoutePaths.admindashboard)
+        revalidatePath(appRoutePaths.adminprofile)
         return { error: false, message: `Record Updated Successfully.` }
     } catch (error) {
         console.log({ error })
@@ -523,7 +530,7 @@ export const updateSale = async (data: FormData) => {
 export const updateMenu = async (data: FormData) => {
     const user = await fetchUser()
     const id = data?.get("id")?.valueOf() as string
-    const { name, price, image, description, categoryId, status } = menuData(data)
+    const { name, price, image, description, categoryId, status, popular } = menuData(data)
     const slug = generateSlug(name)
     // check duplicates
     const alreadyExists = await prisma.menu.findFirst({
@@ -540,7 +547,7 @@ export const updateMenu = async (data: FormData) => {
     try {
         await prisma.menu.update({
             data: {
-                name, slug, price, image, description, categoryId, userId: user.id, status: status as $Enums.FoodStatus
+                name, slug, price, image, description, categoryId, userId: user.id, status: status as $Enums.FoodStatus, popular: popular === "on" ? true : false
             },
             where: { id }
         })

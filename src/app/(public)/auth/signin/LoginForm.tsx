@@ -46,8 +46,7 @@ export default function LoginForm() {
                 router.refresh()
             }
         } catch (error) {
-            console.log('error', error)
-            toast.error('Unable to complete request, please, check your network and try again', { id: "86249", duration: 5000 })
+            toast.error('Unable to complete request, please, check your network and try again', { id: "86249", duration: 5000, className: `${error}` })
         }
         finally {
             setLoading(false)
@@ -59,17 +58,14 @@ export default function LoginForm() {
         toast.loading(`Please wait while we attempt to log you in`, { id: "39274" })
         try {
             const res = await signIn('credentials', { ...values, redirect: false, callbackUrl: appRoutePaths.admindashboard })
-            console.log('res', res)
             if (res?.ok) {
                 toast.success(`Login Successful!.\nRedirecting to your Dashboard...`, { id: "39274" })
             }
             else {
-                console.log('result2', res)
                 if (res?.error === "CredentialsSignin") toast.error("Invalid credentials supplied, please, try again", { id: "39274", duration: 4000 })
                 else toast.error(res?.error || "Invalid credentials supplied, please, try again", { id: "39274" })
             }
         } catch (error) {
-            console.log({ error })
             toast.error(`Something went wrong. Due to ${error}`, { id: "39274" })
         } finally {
             setLoading(false)
@@ -104,14 +100,14 @@ export default function LoginForm() {
                         >
                             <label htmlFor="email">Email</label>
                             <Form.Item<TFormProps> name="email" className='mb-2' style={{ marginBottom: 0, paddingBottom: 0 }}>
-                                <Input type='email' placeholder='Enter Email' />
+                                <Input type='email' placeholder='Enter Email' required />
                             </Form.Item>
                             <label htmlFor="email">Password</label>
                             <Form.Item<TFormProps> name="password" className='mb-2' style={{ marginBottom: 0, paddingBottom: 0 }}>
-                                <Input type='password' placeholder='Enter Password' />
+                                <Input type='password' placeholder='Enter Password' required />
                             </Form.Item>
                             <p onClick={() => setShowResetForm(!showResetForm)} className="cursor-pointer underline underline-offset-2 -mb-2 text-primary text-right text-xsmall">Forgot Password</p>
-                            <button type="submit" onClick={() => form.submit()} disabled={loading} className="rounded-full py-2 px-5 md:px-8 bg-primary text-white text-sm text-center flex-1 cursor-pointer flex justify-center items-center gap-2 mt-2"><GrUserWorker className="text-sm text-inherit" />{loading ? <div className="flex gap-2 items-center"><span className="loading loading-spinner loading-xs"></span> Processing...</div> : 'Login'}</button>
+                            <button type="submit" disabled={loading} className="rounded-full py-2 px-5 md:px-8 bg-primary text-white text-sm text-center flex-1 cursor-pointer flex justify-center items-center gap-2 mt-2"><GrUserWorker className="text-sm text-inherit" />{loading ? <div className="flex gap-2 items-center"><span className="loading loading-spinner loading-xs"></span> Processing...</div> : 'Login'}</button>
                         </Form>
                     </>}
         </aside>

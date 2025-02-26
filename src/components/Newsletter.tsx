@@ -6,9 +6,10 @@ import { ASSETS_URL } from '@/constants'
 export default function Newsletter() {
     return (
         <section className='relative bg-light-secondary py-10 lg:py-20 md:px-4'>
-                    <Image src={ASSETS_URL["tomato_seller"]} alt={"tomato_seller"} fill className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex opacity-10`} />
-            <div className="container mx-auto relative z-40 bg-primary py-10 lg:py-20 px-4 lg:px-10 rounded-[2%] sm:rounded-xl grid lg:grid-cols-2 md:justify-center">
+            <Image src={ASSETS_URL["food_moimoi"]} alt={"food_moimoi"} fill className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex opacity-10`} />
+            <div className="container mx-auto relative z-40 bg-primary py-10 lg:py-20 px-4 lg:px-10 rounded-[2%] sm:rounded-xl grid lg:grid-cols-2 md:justify-center gap-4 lg:gap-8">
                 <aside className="relative overflow-hidden rounded-xl">
+                    <Image src={ASSETS_URL["food_akara_pap"]} alt={"food_akara_pap"} fill className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex`} />
                 </aside>
                 <aside className="relative flex flex-col gap-2 md:gap-4 w-full mx-auto">
                     <Header3 className='text-secondary text-lg md:text-2xl lg:text-3xl font-inspiration'>Newsletter</Header3>

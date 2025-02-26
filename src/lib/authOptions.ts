@@ -28,6 +28,8 @@ export const authOptions: NextAuthOptions = {
             async authorize(credentials) {
                 if (!credentials) return null;
                 const { email, password } = credentials;
+                // const pass = await bcryptjs.hash("Big-Bright", 10)
+                // console.log({pass})
                 const user = await prisma.user.findFirst({ where: { email: email.toLowerCase() } })
                 if (!user) return null
                 const matchPassword = await bcryptjs.compare(password, user.password)

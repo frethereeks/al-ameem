@@ -13,15 +13,16 @@ export default function Footer() {
         <aside className="flex flex-col gap-3">
           <Header3 className='text-text leading-none'>Al-Ameen<span className='text-secondary flex text-xl md:text-2xl leading-none'>Confectionary.</span></Header3>
           <Header4 className='text-text md:pt-6'>Location</Header4>
-          <Para2 className="opacity-90 leading-loose lg:max-w-xs md:pr-4">Wara, Ngaski Local Government Area, Kebbi, Nigeria</Para2>
-          {/* <Link href={appRoutePaths.googleMap} target='_blank' referrerPolicy='no-referrer' className='bg-secondary hover:bg-white hover:text-secondary py-2 px-6 text-text rounded-sm w-max'>Directions</Link> */}
+          {/* <Para2 className="opacity-90 leading-loose lg:max-w-xs md:pr-4">Wara, Ngaski Local Government Area, Kebbi, Nigeria</Para2> */}
+          {/* <Para2 className="opacity-90 leading-loose lg:max-w-xs md:pr-4">Wara, Ngaski Local Government Area, Kebbi, Nigeria</Para2> */}
+          <Para2 className="opacity-90 leading-loose lg:max-w-xs md:pr-4">F01 New Market, Kubwa, Abuja-FCT, Nigeria</Para2>
         </aside>
         <aside className="flex flex-col sm:justify-center gap-4">
           <Header4 className='text-text'>Quick Links</Header4>
           <div className="flex flex-col text-base md:text-base opacity-90">
             <Link href={appRoutePaths.home} className="leading-loose">Home</Link>
-            <Link href={appRoutePaths.about} className="leading-loose">About</Link>
             <Link href={appRoutePaths.menu} className="leading-loose">Menu</Link>
+            <Link href={appRoutePaths.about} className="leading-loose">About</Link>
             <Link href={appRoutePaths.contact} className="leading-loose">Contact</Link>
           </div>
         </aside>

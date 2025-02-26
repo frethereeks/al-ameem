@@ -7,6 +7,7 @@ import { Header, Footer } from "@/components";
 import { Provider } from "@/provider/SessionProvider";
 import ThemeProvider from "@/provider/ThemeProvider";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { ReduxProvider } from "@/provider/ReduxProvider";
 
 export const eugusto = localFont({ src: "../../fonts/Eugusto.otf", variable: "--eugusto", weight: "100 900", });
 export const urbanist = Urbanist({ subsets: ["latin"], variable: "--urbanist", weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], fallback: ["cursive"] });
@@ -22,7 +23,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
+
   return (
     <html lang="en">
       <body
@@ -32,12 +33,14 @@ export default async function RootLayout({
           <AntdRegistry>
             {/*AntdRegistry prevents flicker on the page for antd */}
             <ThemeProvider>
-              <Header />
-              <Toaster />
-              <div className="font-urbanist min-h-[80vh]">
-                {children}
-              </div>
-              <Footer />
+              <ReduxProvider>
+                <Header />
+                <Toaster />
+                <div className="font-urbanist min-h-[80vh]">
+                  {children}
+                </div>
+                <Footer />
+              </ReduxProvider>
             </ThemeProvider>
           </AntdRegistry>
         </Provider>

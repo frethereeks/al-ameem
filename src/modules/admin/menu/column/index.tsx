@@ -27,6 +27,13 @@ export const MENU_COLUMNS = (): TableColumnsType<TMenuProps> => {
             )
         },
         {
+            key: "Popular",
+            title: "Popular",
+            render: (_, val) => (
+                <p className="text-xs md:text-sm text-dark/60 opacity-70 font-medium">{val.popular === true ? "Yes" : "No"}</p>
+            )
+        },
+        {
             key: "Category",
             title: "Category",
             render: (_, val) => (

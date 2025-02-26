@@ -12,13 +12,13 @@ export const headerLinks: THeaderLinks[] = [
     },
     {
         id: "802631",
-        title: "About",
-        url: "/about"
+        title: "Place Order",
+        url: "/menu"
     },
     {
         id: "802632",
-        title: "Menu",
-        url: "/menu"
+        title: "About",
+        url: "/about"
     },
     // {
     //     id: "802633",

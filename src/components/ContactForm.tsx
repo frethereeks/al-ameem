@@ -35,8 +35,8 @@ export default function ContactForm() {
   return (
       <section className='bg-primary py-10 lg:py-20 px-4'>
           <div className="container mx-auto md:px-8 lg:px-10 rounded-xl grid lg:grid-cols-2 gap-4 lg:gap-8 justify-center">
-              <aside className="relative overflow-hidden bg-light-secondary rounded-xl">
-                  <Image src={ASSETS_URL["tomato_cucumber"]} alt={"tomato_cucumber"} fill className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex`} />
+              <aside className="relative overflow-hidden bg-light-secondary rounded-xl before:absolute before:right-0 before:bottom-3 before:z-10 before:w-20 before:h-8 before:bg-transparent before:backdrop-blur-sm">
+                  <Image src={ASSETS_URL["food_suya_table"]} alt={"food_suya_table"} fill className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex`} />
               </aside>
               <aside className="relative flex flex-col py-5">
                   <Header3 className='text-secondary font-inspiration'>Place an Order or</Header3>

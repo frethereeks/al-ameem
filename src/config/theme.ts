@@ -60,7 +60,8 @@ export const appThemeConfig: ThemeConfig = {
         },
         Input: {
             colorBgContainer: THEME_COLOR.background,
-            hoverBorderColor: THEME_COLOR["light-primary"]
+            hoverBorderColor: THEME_COLOR["light-primary"],
+            fontFamily: "helvetica"
         },
         InputNumber: {
             colorBgContainer: THEME_COLOR.background,

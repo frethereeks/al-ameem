@@ -5,7 +5,7 @@ export default function AboutPage() {
   return (
     <main className='relative flex flex-col'>
       <div className="bg-primary">
-        <AboutSection />
+        <AboutSection main={true} />
       </div>
       <HappyClientSection />
       <Newsletter />

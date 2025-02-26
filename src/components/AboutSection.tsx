@@ -9,14 +9,19 @@ import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { ASSETS_URL } from '@/constants'
 
-export default function AboutSection() {
+export default function AboutSection({main} : {main?: boolean}) {
     const pathname = usePathname()
     return (
         <>
             <section className="py-5 md:py-10 lg:py-20 px-4">
                 <div className="container mx-auto lg:px-10 grid lg:grid-cols-2 gap-8 lg:justify-center">
                     <aside className="relative overflow-hidden bg-primary rounded-xl">
-                        <Image src={ASSETS_URL["spinach_trolley"]} alt={"spinach_trolley"} fill className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex`} />
+                        {
+                            main ? 
+                            <Image src={ASSETS_URL["food_jollof"]} alt={"food_jollof"} fill className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex`} />
+                            :
+                            <Image src={ASSETS_URL["puff_puff"]} alt={"puff_puff"} fill className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex`} />
+                        }
                     </aside>
                     <aside className="relative flex flex-col gap-2 md:gap-4 py-10">
                         <Header3 className='text-secondary font-inspiration'>About us</Header3>

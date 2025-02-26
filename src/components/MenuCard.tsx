@@ -8,11 +8,15 @@ import { Header5, Para3 } from './ui/Typography'
 import toast from 'react-hot-toast'
 import { HiOutlineShoppingBag } from 'react-icons/hi2'
 import { ASSETS_URL } from '@/constants'
+import { useAppDispatch } from '@/provider/features/hooks'
+import { addToCart } from '@/provider/features/reducers/cartSlice'
 // import { Image } from 'antd'
 
 export default function MenuCard(food: Menu) {
-
+    const dispatch = useAppDispatch()
+    
     const handleAddToCart = (food: Menu) => {
+        dispatch(addToCart(food))
         toast.success(`${food.name} successfully added to cart.`)
     }
 

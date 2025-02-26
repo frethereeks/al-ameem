@@ -9,11 +9,14 @@ import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { usePathname } from 'next/navigation'
 import SearchInput from './SearchInput'
+// import { useDispatch, useSelector } from 'react-redux'
+import { useAppSelector } from '@/provider/features/hooks'
 
 export default function Header() {
     const [navshow, setNavshow] = React.useState(false)
     const [fixed, setFixed] = React.useState(false)
     const location = usePathname();
+    const cartContents = useAppSelector(state => state.cart)
 
     React.useEffect(() => {
         window.onscroll = () => {
@@ -43,7 +46,7 @@ export default function Header() {
                         </div>
                         {
                             headerLinks.map(link => (
-                                <Link key={link.id} href={link.url} className="lg:flex-1 p-2 lg:px-4 font-semibold lg:text-center text-primary hover:text-white bg-white hover:bg-primary lg:rounded-2xl capitalize">{link.title}</Link>
+                                <Link key={link.id} href={link.url} className="lg:flex-1 p-2 lg:px-4 font-semibold lg:text-center text-primary hover:text-white bg-white hover:bg-primary lg:rounded-full capitalize whitespace-nowrap">{link.title}</Link>
                             ))
                         }
                     </div>
@@ -57,7 +60,7 @@ export default function Header() {
                     </div>
                     <div className="relative text-primary text-2xl lg:text-2xl cursor-pointer p-2">
                         <HiOutlineShoppingCart />
-                        <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-secondary text-white text-xs grid place-items-center">5</div>
+                        <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-secondary text-white text-xs grid place-items-center">{cartContents.length}</div>
                     </div>
                     {/* <div onClick={() => setNavshow(!navshow)} className="relative lg:hidden text-primary text-lg lg:text-2xl cursor-pointer w-6 "> */}
                     <div onClick={() => setNavshow(!navshow)} className="relative lg:hidden bg-text/10 text-primary text-2xl md:text-3xl cursor-pointer xs:w-7 xs:h-7 w-9 h-9 grid place-items-center font-extrabold rounded-md">
