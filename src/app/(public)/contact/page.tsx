@@ -16,7 +16,7 @@ export default function ContactPage() {
             </div>
             <div className="flex flex-col gap-1 mt-5">
               <Header3 className='text-primary font-medium font-eugusto max-w-sm'>Email Address</Header3>
-              <Link href={"mailto: customer@al-ameen.com"} className="font-urbanist text-text text-lg lg:text-xl max-w-md">customer@al-ameen.com</Link>
+              <Link href={"mailto: customer@al-ameen.com"} className="font-urbanist text-text text-lg lg:text-xl max-w-md">customer@bclounge.com</Link>
             </div>
           </aside>
           <aside className="relative bg-primary rounded-xl min-h-60 overflow-hidden lg:col-span-2 grid place-items-center">

@@ -63,11 +63,11 @@ export default function MenuSection({ data: popularFoods, categories }: TPagePro
                         />
                     </div> */}
                     <Header1 className="text-secondary text-center py-4 font-medium">Explore Our Food Menu</Header1>
-                    <div className="flex justify-center gap-4 flex-wrap">
-                        <button onClick={() => handleChangeCategory({ id: "0", name: "All" })} className="border-2 border-primary bg-white text-primary hover:bg-primary hover:text-white text-center w-40 p-4 mt-10 mb-2 shadow-lg shadow-text/40 rounded-md py-1 font-medium flex justify-center items-center gap-2">All <span className='font-urbanist font-semibold text-xs md:text-sm'></span></button>
+                    <div className="flex justify-center items-center gap-x-4 flex-wrap my-2">
+                        <button onClick={() => handleChangeCategory({ id: "0", name: "All" })} className="border-2 border-primary bg-white text-primary hover:bg-primary hover:text-white text-center w-40 p-4 shadow-lg shadow-text/40 rounded-md py-1 font-medium flex justify-center items-center gap-2">All <span className='font-urbanist font-semibold text-xs md:text-sm'></span></button>
                         {
                             categories?.map(category => (
-                                <button onClick={() => handleChangeCategory({ id: category.id, name: category.name })} key={category.id} className="border-2 border-primary bg-white text-primary hover:bg-primary hover:text-white text-center w-40 p-4 mt-10 mb-2 shadow-lg shadow-text/40 rounded-md py-1 font-medium flex justify-center items-center gap-2">{category.name} <span className='font-urbanist font-semibold text-xs md:text-sm'></span></button>
+                                <button onClick={() => handleChangeCategory({ id: category.id, name: category.name })} key={category.id} className="border-2 border-primary bg-white text-primary hover:bg-primary hover:text-white text-center w-40 p-4 shadow-lg shadow-text/40 rounded-md py-1 font-medium flex justify-center items-center gap-2">{category.name} <span className='font-urbanist font-semibold text-xs md:text-sm'></span></button>
                             ))
                         }
                     </div>

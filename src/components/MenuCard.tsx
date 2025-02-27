@@ -5,26 +5,26 @@ import { Menu } from '@prisma/client'
 import Link from 'next/link'
 import React from 'react'
 import { Header5, Para3 } from './ui/Typography'
-import toast from 'react-hot-toast'
+// import toast from 'react-hot-toast'
 import { HiOutlineShoppingBag } from 'react-icons/hi2'
 import { ASSETS_URL } from '@/constants'
-import { useAppDispatch } from '@/provider/features/hooks'
-import { addToCart } from '@/provider/features/reducers/cartSlice'
-// import { Image } from 'antd'
+import Image from 'next/image'
+import { useAppDispatch } from '@/lib/features/hooks'
+import { addToCart } from '@/lib/features/reducers/cartSlice'
 
 export default function MenuCard(food: Menu) {
     const dispatch = useAppDispatch()
     
     const handleAddToCart = (food: Menu) => {
-        dispatch(addToCart(food))
-        toast.success(`${food.name} successfully added to cart.`)
+        dispatch(addToCart({id: food.id, image: food.image, name: food.name, price: food.price, qty: 1}))
+        // toast.success(`${food.name} successfully added to cart.`)
     }
 
   return (
       <>
           <aside key={food.id} className="shadow-lg shadow-primary/30 relative flex flex-col gap-2 max-w-md bg-white rounded-xl hover:shadow-lg overflow-hidden">
               <Link href={`${appRoutePaths.menu}/${food.slug}`} className="min-h-48 flex-shrink-0 relative bg-primary">
-                  <img src={food?.image ?? ASSETS_URL['pepper_assorted']} alt={food.name} className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex`} />
+                  {food.image !== "undefined" && <Image src={food?.image ?? ASSETS_URL['pepper_assorted']} alt={food.name} className={`w-full h-full absolute object-cover object-center flex-shrink-0 flex`} fill />}
               </Link>
               <div className="flex-1 flex flex-col justify-between gap-2 lg:gap-3 p-4 pt-1.5">
                   <Link href={`${appRoutePaths.menu}/${food.slug}`} className="flex-1 flex flex-col gap-1">

@@ -6,7 +6,7 @@ import Image from 'next/image';
 // import { Header3 } from '@/components/ui/Typography'
 
 export const metadata: Metadata = {
-  title: "Al-Ameem Restaurant :: Signin",
+  title: "BC Lounge Restaurant :: Signin",
   description: "Food for the body is not enough. There must be food for the soul.",
 };
 

@@ -26,7 +26,7 @@ export default async function Home() {
               <Link href={appRoutePaths.menu} className="group button bg-secondary rounded-full flex items-center gap-1 w-max">Order Now <IoIosArrowRoundForward className="text-xl md:text-3xl group-hover:translate-x-2" /></Link>
             </aside>
             <aside className="relative overflow-hidden bg-primary rounded-xl min-h-60 row-start-1 md:row-span-2">
-              <Image src={ASSETS_URL["rice_stew"]} alt={"rice_stew"} fill className={`w-full h-full rounded-xl absolute object-cover object-center flex-shrink-0 flex`} />
+              <Image src={ASSETS_URL["chicken"]} alt={"chicken"} fill className={`w-full h-full rounded-xl absolute object-cover object-center flex-shrink-0 flex`} />
             </aside>
           </div>
         </section>

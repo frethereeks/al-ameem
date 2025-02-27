@@ -10,7 +10,7 @@ import { eugusto, inspiration, urbanist } from "../layout";
 import { Provider } from "@/provider/SessionProvider";
 
 export const metadata: Metadata = {
-  title: "Al-Ameem Restaurant",
+  title: "BC Lounge Restaurant",
   description: "Food for the body is not enough. There must be food for the soul.",
 };
 

@@ -6,7 +6,7 @@ import { Metadata } from 'next'
 import bcryptjs from "bcryptjs"
 
 export const metadata: Metadata = {
-  title: "Al-Ameem Restaurant :: Signup",
+  title: "BC Lounge Restaurant :: Signup",
   description: "Food for the body is not enough. There must be food for the soul.",
 };
 

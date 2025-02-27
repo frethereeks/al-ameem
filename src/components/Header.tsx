@@ -9,14 +9,17 @@ import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { usePathname } from 'next/navigation'
 import SearchInput from './SearchInput'
+import { useAppSelector } from '@/lib/features/hooks'
+import { ASSETS_URL } from '@/constants'
+import Image from 'next/image'
+import { CartProp } from '@/types'
 // import { useDispatch, useSelector } from 'react-redux'
-import { useAppSelector } from '@/provider/features/hooks'
 
 export default function Header() {
     const [navshow, setNavshow] = React.useState(false)
     const [fixed, setFixed] = React.useState(false)
     const location = usePathname();
-    const cartContents = useAppSelector(state => state.cart)
+    const cartContents: CartProp[] = useAppSelector(state => state.cart)
 
     React.useEffect(() => {
         window.onscroll = () => {
@@ -51,17 +54,20 @@ export default function Header() {
                         }
                     </div>
                 </nav>
-                <div className="flex-1 flex lg:justify-center items-center flex-shrink-0">
-                    <Link href={appRoutePaths.home} className='text-primary text-2xl md:text-3xl lg:text-4xl font-medium font-eugusto leading-none'>Al-Ameen <span className='text-secondary flex text-sm lg:text-lg text-center md:tracking-widest uppercase -my-1 lg:-my-2'>Confectionary</span></Link>
-                </div>
+                <Link href={appRoutePaths.home} className="flex-1 flex lg:justify-center items-center gap-1 flex-shrink-0">
+                    <aside className="relative overflow-hidden bg-transparent rounded-xl w-6 lg:w-10 h-8">
+                        <Image src={ASSETS_URL["logo"]} alt={"logo"} fill className={`w-full h-full rounded-xl absolute object-cover object-center flex-shrink-0 flex`} />
+                    </aside>
+                    <h1 className='text-primary text-2xl md:text-3xl lg:text-4xl font-medium font-eugusto leading-none'>BC<span className='text-secondary'>Lounge</span></h1>
+                </Link>
                 <div className='flex-1 flex-shrink-0 flex justify-end items-center gap-4'>
                     <div className={`hidden lg:flex gap-2 border-b-2 border-primary max-w-lg`}>
                         <SearchInput />
                     </div>
-                    <div className="relative text-primary text-2xl lg:text-2xl cursor-pointer p-2">
+                    <Link href={appRoutePaths.cart} className="relative text-primary text-2xl lg:text-2xl cursor-pointer p-2">
                         <HiOutlineShoppingCart />
-                        <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-secondary text-white text-xs grid place-items-center">{cartContents.length}</div>
-                    </div>
+                        <div className="absolute top-0 right-0 w-4 h-4 rounded-full bg-secondary text-white text-xs grid place-items-center">{cartContents?.length}</div>
+                    </Link>
                     {/* <div onClick={() => setNavshow(!navshow)} className="relative lg:hidden text-primary text-lg lg:text-2xl cursor-pointer w-6 "> */}
                     <div onClick={() => setNavshow(!navshow)} className="relative lg:hidden bg-text/10 text-primary text-2xl md:text-3xl cursor-pointer xs:w-7 xs:h-7 w-9 h-9 grid place-items-center font-extrabold rounded-md">
                         <HiMenuAlt3 />

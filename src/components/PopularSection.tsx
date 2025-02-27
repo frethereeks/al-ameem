@@ -23,7 +23,7 @@ export default function PopularSection({ data }: { data: Menu[] | undefined }) {
                                 650: { slidesPerView: 2, spaceBetween: 20 },
                                 1042: { slidesPerView: 3, spaceBetween: 30 },
                             }}
-                            items={data?.length ? data?.filter(el => el.popular === true).map(food => (
+                            items={data?.length ? data?.filter(el => el.popular === true)?.map(food => (
                                 <MenuCard key={food.id} {...food} />
                             )) : []
                             }

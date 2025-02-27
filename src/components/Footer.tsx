@@ -11,11 +11,11 @@ export default function Footer() {
     <footer className='bg-background py-10 px-4'>
       <div className="container mx-auto relative grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-10 text-text">
         <aside className="flex flex-col gap-3">
-          <Header3 className='text-text leading-none'>Al-Ameen<span className='text-secondary flex text-xl md:text-2xl leading-none'>Confectionary.</span></Header3>
+          <Header3 className='text-text leading-none'>BC<span className='text-secondary leading-none'>Lounge</span></Header3>
           <Header4 className='text-text md:pt-6'>Location</Header4>
           {/* <Para2 className="opacity-90 leading-loose lg:max-w-xs md:pr-4">Wara, Ngaski Local Government Area, Kebbi, Nigeria</Para2> */}
           {/* <Para2 className="opacity-90 leading-loose lg:max-w-xs md:pr-4">Wara, Ngaski Local Government Area, Kebbi, Nigeria</Para2> */}
-          <Para2 className="opacity-90 leading-loose lg:max-w-xs md:pr-4">F01 New Market, Kubwa, Abuja-FCT, Nigeria</Para2>
+          <Para2 className="opacity-90 leading-loose lg:max-w-xs md:pr-4">F01 Building Market, Kubwa, Abuja-FCT, Nigeria</Para2>
         </aside>
         <aside className="flex flex-col sm:justify-center gap-4">
           <Header4 className='text-text'>Quick Links</Header4>
@@ -30,7 +30,7 @@ export default function Footer() {
           <div className="flex flex-col gap-3 md:gap-4">
             <Header4 className='text-text'>Opening Hours</Header4>
             <div className="flex flex-col text-base md:text-base opacity-90">
-              <p className="leading-loose">Monday - Friday</p>
+              <p className="leading-loose">Monday - Saturday</p>
               <p className="leading-loose">08:30 AM - 05:00 PM</p>
               <Link href={"tel: +2349069071120"} className="leading-loose">Tel: +2349069071120</Link>
             </div>

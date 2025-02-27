@@ -5,8 +5,9 @@ import React from 'react'
 
 export default async function MenuPage() {
   const res = await getPageMenu()
-    const menu = res.data?.menu
-    const categories = res.data?.category
+  const menu = res.data?.menu
+  const categories = res.data?.category
+
   return (
     <main className='relative flex flex-col bg-background'>
       <section className="relative py-10 lg:py-20 px-4 text-center bg-background shadow-lg shadow-text/10">

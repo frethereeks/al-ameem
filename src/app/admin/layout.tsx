@@ -13,7 +13,7 @@ const urbanist = Urbanist({ subsets: ["latin"], variable: "--urbanist", weight: 
 const inspiration = Inspiration({ subsets: ["latin"], variable: "--inspiration", weight: "400", fallback: ["Helvetica", "Arial", "sans-serif"] });
 
 export const metadata: Metadata = {
-    title: "Al-Ameem Restaurant Admin Dashboard",
+    title: "BC Lounge Restaurant Admin Dashboard",
     description: "Food for the body is not enough. There must be food for the soul.",
 };
 

@@ -36,6 +36,7 @@ import plantain from "./plantain.webp"
 import puff_puff from "./puff_puff.jpg" 
 import rice_stew from "./rice_stew.jpg" 
 import vegetable_soup from "./vegetable_soup.jpg"
+import logo from "./logo.png"
 
 export {
     bananas_other_fruits,
@@ -74,4 +75,5 @@ export {
     puff_puff,
     rice_stew,
     vegetable_soup,
+    logo
 }
