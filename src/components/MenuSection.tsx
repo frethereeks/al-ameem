@@ -32,7 +32,7 @@ export default function MenuSection({ data: popularFoods, categories }: TPagePro
 
     return (
         <>
-            <section className="py-10 md:py-10 lg:py-20 px-4">
+            <section className="py-10 md:py-10 lg:py-20 px-2">
                 <aside className="container mx-auto flex flex-col gap-4">
                     {/* <Header1 className="text-primary text-center py-4 font-medium">Popular Dishes</Header1>
                     <div className="px-4 md:px-8 lg:px-10">
@@ -72,7 +72,7 @@ export default function MenuSection({ data: popularFoods, categories }: TPagePro
                             ))
                         }
                     </div>
-                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 gap-y-6 justify-center">
                         {
                             data?.slice((currentPage * DEFAULT_PAGE_SIZE), (DEFAULT_PAGE_SIZE + ((currentPage * DEFAULT_PAGE_SIZE)))).map(food => (
                                 <MenuCard key={food.id} {...food} />

@@ -32,9 +32,9 @@ export default function PopularSection({ data }: { data: Menu[] | undefined }) {
                 </div>
             </section>
             <section className="bg-white py-10 md:py-10 lg:py-20 px-4">
-                <div className="container mx-auto flex flex-col gap-6 md:gap-8">
+                <div className="container mx-auto flex flex-col gap-2 sm:gap-4 md:gap-8">
                     <Header1 className="text-primary text-center py-4 font-medium">Latest Menu</Header1>
-                    <aside className="px-4 md:px-8 lg:px-10 grid grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+                    <aside className="md:px-4 lg:px-10 grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 gap-y-6 justify-center">
                         {data?.length ? data?.filter(el => el.popular !== true).slice(0, 6).map(food => (
                             <MenuCard key={food.id} {...food} />
                         )) : []
