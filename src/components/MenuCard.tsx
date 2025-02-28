@@ -4,7 +4,7 @@ import { appRoutePaths } from '@/routes/paths'
 import { Menu } from '@prisma/client'
 import Link from 'next/link'
 import React from 'react'
-import { Header5, Para3 } from './ui/Typography'
+// import { Header5, Para3 } from './ui/Typography'
 // import toast from 'react-hot-toast'
 import { HiOutlineShoppingBag } from 'react-icons/hi2'
 import { ASSETS_URL } from '@/constants'
@@ -13,11 +13,10 @@ import { useAppDispatch } from '@/lib/features/hooks'
 import { addToCart } from '@/lib/features/reducers/cartSlice'
 
 export default function MenuCard(food: Menu) {
+    console.log('description', food?.description)
     const dispatch = useAppDispatch()
-    
     const handleAddToCart = (food: Menu) => {
         dispatch(addToCart({id: food.id, image: food.image, name: food.name, price: food.price, qty: 1}))
-        // toast.success(`${food.name} successfully added to cart.`)
     }
 
   return (
@@ -28,12 +27,12 @@ export default function MenuCard(food: Menu) {
               </Link>
               <div className="flex-1 flex flex-col justify-between gap-2 lg:gap-3 p-4 pt-1.5">
                   <Link href={`${appRoutePaths.menu}/${food.slug}`} className="flex-1 flex flex-col gap-1">
-                      <Header5 className='text-primary font-medium font-eugusto'>{food.name}</Header5>
-                      <Para3 className="font-urbanist text-text text-justify line-clamp-3">{food.description}</Para3>
+                      <h3 className='text-primary text-base md:text-lg font-medium font-eugusto'>{food.name}</h3>
+                      <p className="font-urbanist text-text text-justify text-sm md:text-base line-clamp-3">{food.description !== "undefined" ? food.description : `Our ${food.name} will bring out the best in you. For an experience of what cloud this combination can take you, try it out with us today.`}</p>
                   </Link>
                   <div className="flex justify-between items-center gap-3 py-2">
-                      <Header5 className='text-secondary font-urbanist'>&#8358;{food.price.toLocaleString()}</Header5>
-                      <button onClick={() => handleAddToCart(food)} className="group flex-shrink-0 flex justify-center items-center h-8 w-8 rounded-xl bg-text/10 text-primary hover:bg-text/20 text-lg md:text-xl cursor-pointer font-urbanist"><HiOutlineShoppingBag /></button>
+                      <p className='text-secondary text-sm md:text-base font-sans'>&#8358;{food.price.toLocaleString()}</p>
+                      <button onClick={() => handleAddToCart(food)} className="group flex-shrink-0 flex justify-center items-center h-8 w-8 rounded-xl bg-text/10 text-primary hover:bg-text/20 text-base md:text-lg lg:text-xl cursor-pointer font-urbanist"><HiOutlineShoppingBag /></button>
                   </div>
               </div>
           </aside>

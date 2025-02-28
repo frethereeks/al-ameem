@@ -56,7 +56,7 @@ export default function AddMenu({ closeModal, data, category }: { data?: TMenuPr
             // setImage((prev) => ({...prev, value: data?.image ?? ""}))
             if (categoryRef.current) categoryRef.current.value = data?.categoryId
             if (statusRef.current) statusRef.current.value = data?.status
-            if (imagePreviewRef.current) imagePreviewRef.current.src = data?.image
+            // if (imagePreviewRef.current) imagePreviewRef.current.src = data?.image
             if (popularRef.current) popularRef.current.checked = data?.popular
         }
         else {

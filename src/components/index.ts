@@ -9,6 +9,7 @@ import MenuSection from "./MenuSection"
 import Newsletter from "./Newsletter"
 import PopularSection from "./PopularSection"
 import SearchInput from "./SearchInput"
+import SlugAddBtn from "./SlugAddBtn"
 
 export {
     AboutSection,
@@ -22,4 +23,5 @@ export {
     Newsletter,
     PopularSection,
     SearchInput,
+    SlugAddBtn,
 }

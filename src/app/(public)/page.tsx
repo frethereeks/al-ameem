@@ -12,7 +12,6 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 export default async function Home() {
   const res = await getPageMenu()
   const menu = res.data?.menu
-  // console.log({res, menu})
 
   return (
     <>

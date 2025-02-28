@@ -44,7 +44,7 @@ export default function Header() {
                         <div onClick={() => setNavshow(!navshow)} className="absolute top-2 right-3 lg:hidden bg-text/30 text-primary text-3xl cursor-pointer p-1 grid place-items-center font-extrabold rounded-xl">
                             <IoCloseOutline />
                         </div>
-                        <div className={`flex absolute top-12 left-0 w-[90%] mx-4 lg:hidden gap-2 border-b-2 border-primary`}>
+                        <div className={`flex absolute back top-12 left-0 w-[90%] mx-4 lg:hidden gap-2 border-b-2 border-primary`}>
                             <SearchInput />
                         </div>
                         {

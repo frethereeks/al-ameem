@@ -40,7 +40,7 @@ export default function AppSlider({
                 className={`overflow-x-hidden w-full items-stretch py-5 ${className}`}
             >
                 {items.map((item, i) => (
-                    <SwiperSlide key={i} className="relative min-h-full w-full">
+                    <SwiperSlide key={i} className="relative min-h-full w-full py-4">
                         {item}
                     </SwiperSlide>
                 ))}

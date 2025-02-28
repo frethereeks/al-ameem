@@ -56,15 +56,15 @@ export default function PublicCartPage() {
                                             <IoCloseOutline />
                                         </button>
                                         <div className="flex gap-2 items-center flex-1 relative">
-                                            <div className="h-12 w-12 md:h-16 md:w-16 rounded-md relative overflow-hidden">
+                                            <div className="h-12 w-12 md:h-16 md:w-16 rounded-md relative overflow-hidden flex-shrink-0">
                                                 <Image src={el.image} alt={el.name} className="object-cover flex-shrink-0" fill />
                                             </div>
                                             <div className="flex flex-col text-primary">
-                                                <h4 className="text-lg md:text-xl font-semibold">{el.name}</h4>
-                                                <p className="text-sm md:text-base text-secondary opacity-70 font-medium">&#8358;{el.price.toLocaleString()}</p>
+                                                <h4 className="text-sm sm:text-base md:text-xl font-semibold">{el.name}</h4>
+                                                <p className="text-sm md:text-base text-secondary opacity-70 font-medium font-sans">&#8358;{el.price.toLocaleString()}</p>
                                             </div>
                                         </div>
-                                        <p className="text-sm md:text-base opacity-70 font-medium flex-1 text-center">&#8358;{((el.qty * el.price)).toLocaleString()}</p>
+                                        <p className="text-sm md:text-base opacity-70 font-medium font-sans flex-1 text-center">&#8358;{((el.qty * el.price)).toLocaleString()}</p>
                                         <div className="border border-slate-200 rounded-md w-10 h-8 overflow-hidden">
                                             <input onChange={e => dispatch(changeInCart({ id: el.id, qty: Number(e.target.value) }))} type="number" min={1} value={el.qty} className="bg-transparent w-16 px-2 outline-none pt-0.5 pl-2.5 text-sm md:text-base" />
                                         </div>
@@ -75,7 +75,7 @@ export default function PublicCartPage() {
                         <div className="flex flex-col border-t border-secondary/20 border-solid divide-y divide-slate-200 text-text/80 py-2">
                             <div className="flex justify-between items-center gap-2 py-1 px-2 text-sm md:text-base">
                                 <p className="opacity-60">Subtotal:</p>
-                                <p className="font-semibold">&#8358;{cartContents.reduce((total, el) => el.price * el.qty + total, 0).toLocaleString()}</p>
+                                <p className="font-semibold font-sans">&#8358;{cartContents.reduce((total, el) => el.price * el.qty + total, 0).toLocaleString()}</p>
                             </div>
                             {/* <div className="flex justify-between items-center gap-2 py-1 px-2 text-sm md:text-base">
                                 <p className="opacity-60">Discount Applied:</p>
@@ -87,7 +87,7 @@ export default function PublicCartPage() {
                             </div>
                             <div className="flex justify-between items-center gap-2 py-1 px-2 text-sm md:text-base">
                                 <p className="opacity-60">Grand Total:</p>
-                                <p className="text-base md:text-lg font-bold">&#8358;{(cartContents.reduce((total, el) => el.price * el.qty + total, 0)).toLocaleString()}</p>
+                                <p className="text-base md:text-lg font-bold font-sans">&#8358;{(cartContents.reduce((total, el) => el.price * el.qty + total, 0)).toLocaleString()}</p>
                             </div>
                             <button onClick={() => setShowModal(!showModal)} className='bg-primary hover:bg-primary/80 text-white text-base md:text-lg rounded-md flex justify-center items-center gap-2 mt-2 p-2 '><IoWalletOutline /> Proceed to Checkout</button>
                             <p className="opacity-60 text-xs text-center pt-1">100% Secure with MasterCard, Paystack and Flutter Technology</p>

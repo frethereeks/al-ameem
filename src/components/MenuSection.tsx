@@ -1,14 +1,16 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client"
 
 import React, { useState } from 'react'
 import { Header1 } from './ui/Typography'
-import { Category, Menu } from '@prisma/client'
+import { Menu } from '@prisma/client'
 import MenuCard from './MenuCard'
 import { DEFAULT_PAGE_SIZE } from '@/constants'
+import { TCategoryProps } from '@/types'
 
 type TPageProps = {
     data: Menu[] | undefined
-    categories: Category[] | undefined
+    categories: TCategoryProps[] | undefined
 }
 
 export default function MenuSection({ data: popularFoods, categories }: TPageProps) {
@@ -25,8 +27,7 @@ export default function MenuSection({ data: popularFoods, categories }: TPagePro
         setCategory(value.name)
         if (value.name === "All") setData(popularFoods)
         else setData(popularFoods?.filter(prev => prev.categoryId === value.id))
-        setCurrentPage(0)
-        console.log({ category })
+        setCurrentPage(0) // Reset page to 0 when changing category
     }
 
     return (
@@ -66,12 +67,12 @@ export default function MenuSection({ data: popularFoods, categories }: TPagePro
                     <div className="flex justify-center items-center gap-x-4 flex-wrap my-2">
                         <button onClick={() => handleChangeCategory({ id: "0", name: "All" })} className="border-2 border-primary bg-white text-primary hover:bg-primary hover:text-white text-center w-40 p-4 shadow-lg shadow-text/40 rounded-md py-1 font-medium flex justify-center items-center gap-2">All <span className='font-urbanist font-semibold text-xs md:text-sm'></span></button>
                         {
-                            categories?.map(category => (
+                            categories?.filter(el => el.menu.length > 0)?.map(category => (
                                 <button onClick={() => handleChangeCategory({ id: category.id, name: category.name })} key={category.id} className="border-2 border-primary bg-white text-primary hover:bg-primary hover:text-white text-center w-40 p-4 shadow-lg shadow-text/40 rounded-md py-1 font-medium flex justify-center items-center gap-2">{category.name} <span className='font-urbanist font-semibold text-xs md:text-sm'></span></button>
                             ))
                         }
                     </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
                         {
                             data?.slice((currentPage * DEFAULT_PAGE_SIZE), (DEFAULT_PAGE_SIZE + ((currentPage * DEFAULT_PAGE_SIZE)))).map(food => (
                                 <MenuCard key={food.id} {...food} />

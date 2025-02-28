@@ -5,7 +5,7 @@ import { generateSlug } from "@/lib";
 import { authOptions } from "@/lib/authOptions";
 import prisma from "@/lib/prisma";
 import { appRoutePaths } from "@/routes/paths";
-import { TCategory, TMenuProps, TSaleProps, TUserProps } from "@/types";
+import { TCategory, TCategoryProps, TMenuProps, TSaleProps, TUserProps } from "@/types";
 import { $Enums, Menu } from "@prisma/client";
 import bcryptjs from "bcryptjs"
 import { randomUUID } from "crypto";
@@ -357,7 +357,7 @@ export const fetchMenu = async () => {
             orderBy: { createdAt: "desc" }
         }) as TMenuProps[]
         const category = await prisma.category.findMany({
-            where: { status: "VISIBLE" }
+            where: { status: "VISIBLE" },
         }) as TCategory[]
 
         return { error: false, message: `Record Retrieved Successfully.`, data: { data, category }, role: user.role }
@@ -390,7 +390,7 @@ export const fetchSearch = async (query: string) => {
             },
             orderBy: { createdAt: "desc" }
         }) as Menu[]
-
+        revalidatePath(appRoutePaths.search);
         return { error: false, message: `${data.length} result found.`, data }
     } catch (error) {
         console.log('error', error)
@@ -408,8 +408,12 @@ export const getPageMenu = async () => {
             orderBy: { createdAt: "desc" }
         }) as Menu[]
         const category = await prisma.category.findMany({
-            where: { status: "VISIBLE" }
-        }) as TCategory[]
+            where: { status: "VISIBLE" },
+            include: {
+                menu: { select: { id: true, name: true } },
+                user: { select: { firstname: true, lastname: true, id: true } },
+            }
+        }) as TCategoryProps[]
 
         return { error: false, message: `Record Retrieved Successfully.`, data: { menu, category } }
     } catch (error) {
